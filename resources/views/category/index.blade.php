@@ -60,14 +60,11 @@
                                                 </a>
 
 
-                                                <form action="{{ route('category.destroy', $category->id) }}" method="post" style="display: inline-block;">
-                                                       @csrf
+
+                                                <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display: inline;">
+                                                    @csrf
                                                     @method('DELETE')
-                                                    <button type="button" class="btn btn-danger btn-link"
-                                                            data-original-title="" title="">
-                                                        <i class="material-icons">close</i>
-                                                        <div class="ripple-container"></div>
-                                                    </button>
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                                 </form>
 
                                             </td>

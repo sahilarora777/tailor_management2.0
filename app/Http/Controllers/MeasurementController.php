@@ -14,7 +14,7 @@ class MeasurementController extends Controller
      */
     public function index()
     {
-      $measurements = Measurement::with('clients')->paginate(2);
+      $measurements = Measurement::with('clients','category')->paginate(2);
         return view('measurement.index', compact('measurements'));
     }
 
@@ -24,7 +24,8 @@ class MeasurementController extends Controller
     public function create()
     {
         $clients = Client::all();
-        return view('measurement.add',compact('clients'));
+        $categories = Categorie::all();
+        return view('measurement.add',compact('clients','categories'));
 
     }
 
@@ -36,6 +37,7 @@ class MeasurementController extends Controller
         $measurement = new Measurement();
         $measurement->date = $request->input('date');
         $measurement->clients_id = $request->input('clients_id');
+        $measurement->categories_id = $request->input('categories_id');
         $measurement->description = $request->input('description');
         $measurement->shoulder = $request->input('shoulder');
         $measurement->back = $request->input('back');
@@ -85,6 +87,7 @@ class MeasurementController extends Controller
         $measurement = Measurement::findOrFail($id);
         $measurement->date = $request->input('date');
         $measurement->clients_id = $request->input('clients_id');
+        $measurement->categories_id = $request->input('categories_id');
         $measurement->description = $request->input('description');
         $measurement->shoulder = $request->input('shoulder');
         $measurement->back = $request->input('back');

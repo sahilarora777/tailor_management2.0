@@ -13,27 +13,28 @@ return new class extends Migration
     {
         Schema::create('measurements', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
+            $table->string('date')->nullable();
             $table->integer('clients_id');
-            $table->string('description');
-            $table->integer('shoulder');
-            $table->integer('back');
-            $table->integer('sleeve');
-            $table->integer('lap');
-            $table->integer('collar');
-            $table->integer('chest');
-            $table->integer('armhole');
-            $table->integer('long');
-            $table->integer('neck');
-            $table->integer('waist');
-            $table->integer('bottom');
-            $table->integer('length');
-            $table->integer('top');
-            $table->integer('short');
-            $table->integer('trouser');
-            $table->integer('hip');
-            $table->integer('inches');
-            $table->integer('other');
+            $table->integer('categories_id');
+            $table->string('description')->nullable();
+            $table->integer('shoulder')->nullable();
+            $table->integer('back')->nullable();
+            $table->integer('sleeve')->nullable();
+            $table->integer('lap')->nullable();
+            $table->integer('collar')->nullable();
+            $table->integer('chest')->nullable();
+            $table->integer('armhole')->nullable();
+            $table->integer('long')->nullable();
+            $table->integer('neck')->nullable();
+            $table->integer('waist')->nullable();
+            $table->integer('bottom')->nullable();
+            $table->integer('length')->nullable();
+            $table->integer('top')->nullable();
+            $table->integer('short')->nullable();
+            $table->integer('trouser')->nullable();
+            $table->integer('hip')->nullable();
+            $table->integer('inches')->nullable();
+            $table->integer('other')->nullable();
             $table->timestamps();
         });
     }

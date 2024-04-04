@@ -12,7 +12,11 @@ class Measurement extends Model
     protected $guarded = [];
 
     public function clients(){
-        return $this->belongsTo(Brand::class,'clients_id');
+        return $this->belongsTo(Client::class,'clients_id');
+    }
+
+    public function category(){
+        return $this->belongsTo(Categorie::class,'categories_id');
     }
 
 }

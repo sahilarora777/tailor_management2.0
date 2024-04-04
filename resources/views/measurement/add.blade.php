@@ -20,6 +20,14 @@
                         <form action="{{ route('measurement.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
+
+
+                                <div class=" me-3 my-3 text-end">
+                                    <a class="btn bg-gradient-dark mb-0" href="{{ route('client.create') }}"><i
+                                            class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New
+                                        Client</a>
+                                </div>
+
                                 <div class="col-md-4">
                                     <label for="clients_id" class="form-label">Client:</label>
                                     <select name="clients_id" id="clients_id" class="form-select" required>
@@ -27,8 +35,21 @@
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->name }}</option>
                                         @endforeach
+                                        <option value="new">Add New Client</option> <!-- Add New Client option -->
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="categories_id">Category:</label>
+                                    <select name="categories_id" id="categories_id" class="form-control" required>
+                                        <option value="" selected>--Select--fff</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
                                 <div class="col-md-4">
                                     <label for="date" class="form-label">Date:</label>
                                     <input type="date" name="date" id="date" class="form-control">
