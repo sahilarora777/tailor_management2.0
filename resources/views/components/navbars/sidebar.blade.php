@@ -33,13 +33,13 @@
 
             <!-- Clients dropdown -->
             <li class="nav-item dropdown mt-3">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="clientsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white {{ $activePage == 'AddClient' ? 'active bg-gradient-primary' : '' }}" href="#" id="clientsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons opacity-10">table_view</i>
                     <span class="nav-link-text ms-1">Clients</span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="clientsDropdown">
-                    <a class="dropdown-item" href="/client/create">Add Client</a>
-                    <a class="dropdown-item" href="/client">Manage Client</a>
+                <div class="dropdown-menu" aria-labelledby="clientsDropdown" style="margin-top: 12;"> 
+                    <a class="dropdown-item" href="{{ url('/client/create') }}">Add Client</a>
+                    <a class="dropdown-item" href="{{ url('/client') }}">Manage Client</a>
                 </div>
             </li>
             <!-- Brand dropdown -->
@@ -55,7 +55,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons opacity-10">table_view</i>
+                    <i class="material-icons opacity-10">category</i>
                     <span class="nav-link-text ms-1">Categories</span>
                 </a>
                 <div class="dropdown-menu" >
@@ -66,7 +66,7 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons opacity-10">table_view</i>
+                    <i class="material-icons opacity-10">inventory_2</i>
                     <span class="nav-link-text ms-1">Services/products</span>
                 </a>
                 <div class="dropdown-menu" >
@@ -79,7 +79,7 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons opacity-10">table_view</i>
+                    <i class="material-icons opacity-10">ruler</i>
                     <span class="nav-link-text ms-1">Measurement</span>
                 </a>
                 <div class="dropdown-menu" >

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Client;
 use App\Models\Measurement;
 use Illuminate\Http\Request;
