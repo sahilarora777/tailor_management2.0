@@ -17,13 +17,9 @@
                 </div>
                 <div class="container">
                     <div class="col-md-12">
-
-                        <form action="{{ route('measurement.update', $measurement->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('measurement.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
                             <div class="row mb-3">
-
-
                                 <div class="col-md-4">
                                     <label for="clients_id" class="form-label">Client:</label>
                                     <select name="clients_id" id="clients_id" class="form-control" required>
@@ -36,8 +32,11 @@
                                         <option value="new">Add New Client</option> <!-- Add New Client option -->
                                     </select>
                                 </div>
-
-
+                               
+                                <div class="col-md-4">
+                                    <label for="date" class="form-label">Date:</label>
+                                    <input type="date" name="date" id="date" class="form-control" value="{{ old('date', $measurement->date) }}">
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -51,17 +50,11 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4">
-                                    <label for="date" class="form-label">Date:</label>
-                                    <input type="date" name="date" id="date" class="form-control" value="{{ old('date', $measurement->date) }}">
-                                </div>
-
-                            
-                          
-
+                            <!-- Measurement Fields -->
+                           
                             <div class="row mt-4">
                                 <div class="col-md-12 text-center">
-                                    <input type="submit" value="Update" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                         </form>

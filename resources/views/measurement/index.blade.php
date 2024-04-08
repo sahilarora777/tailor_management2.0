@@ -5,9 +5,9 @@
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage='Measurement List'></x-navbars.navs.auth>
         <!-- End Navbar -->
-        <div class="container-fluid px-2 px-md-4">
-            <div class="card card-body mx-3 mx-md-4 mt-n6">
-                <div class="row mb-2">
+        <div class="container-fluid px-4">
+            <div class="card card-body shadow-sm mt-4">
+                <div class="row mb-4">
                     <div class="col-md-6">
                         <!-- Add any content for the left column if needed -->
                     </div>
@@ -15,41 +15,43 @@
                         <a href="/measurement/create" class="btn btn-primary">Add New Measurement</a>
                     </div>
                 </div>
+                <div class="col-md-6 mb-2">
+                                            <a href="{{ route('measurement.index') }}" class="btn btn-warning btn-custom">Clear</a>
+                                        </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Client</th>
-                            <th scope="col">Categories<th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Description</th>
-                  
-                            <th scope="col">Actions</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Client</th>
+                                <th scope="col">Categories</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        @foreach ($measurements as $measurement)
+                            @foreach ($measurements as $measurement)
                             <tr>
                                 <th scope="row">{{ $measurement->id }}</th>
                                 <td>{{ $measurement->clients->name}}</td>
                                 <td>{{ $measurement->category?->name}}</td>
                                 <td>{{ $measurement->date }}</td>
-                                <td>{{ $measurement->description }}</td>
-
                                 <td>
                                     <a href="{{ route('measurement.show', $measurement->id) }}" class="btn btn-primary btn-sm">View</a>
                                     <a href="{{ route('measurement.edit', $measurement->id) }}" class="btn btn-success btn-sm">Edit</a>
-                                    <form action="{{ route('measurement.destroy', $measurement->id) }}" method="POST" style="display: inline;">
+                                    <form action="{{ route('measurement.destroy', $measurement->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this measurement?')">Delete</button>
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="mt-3">
+                    {{$measurements->links()}}
                 </div>
             </div>
         </div>

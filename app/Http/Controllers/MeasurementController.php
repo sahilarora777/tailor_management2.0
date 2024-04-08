@@ -14,44 +14,52 @@ class MeasurementController extends Controller
      */
     public function index()
     {
-      $measurements = Measurement::with('clients','category')->paginate(10);
+      $measurements = Measurement::with('clients','category')->paginate(2);
         return view('measurement.index', compact('measurements'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Measurement $measurement)
     {
         $clients = Client::all();
         $categories = Categorie::all();
-        return view('measurement.add',compact('clients','categories'));
+        $previousMeasurement = Measurement::latest()->first();
+
+        return view('measurement.add',compact('clients','categories','measurement','previousMeasurement'));
 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $measurement = new Measurement();
-        $measurement->date = $request->input('date');
-        $measurement->clients_id = $request->input('clients_id');
-        $measurement->categories_id = $request->input('categories_id');
-        $measurement->description = $request->input('description');
-        $measurement->name = $request->input('name');
-      
-        $measurement->save();
+  
+     public function store(Request $request)
+{
+    $request->validate([ 
+        'date' =>'required',
+             'clients_id' => 'required',
+             'categories_id' => 'required',
 
-        return redirect()->route('measurement.index')->with('success', 'measurement store successfully');
-    }
+    ]);
+    Measurement::create($request->post());
+
+         return redirect()->route('measurement.index')->with('success', 'Measurement added successfully');
+     }
+     
 
     /**
      * Display the specified resource.
      */
     public function show(Measurement $measurement)
     {
-        //
+
+        $clients = Client::all();
+        $categories = Categorie::all();
+        $previousMeasurement = $measurement;
+        return view('measurement.view', compact('measurement','clients','categories','previousMeasurement'));
+
     }
 
     /**
@@ -59,42 +67,27 @@ class MeasurementController extends Controller
      */
     public function edit(Measurement $measurement)
     {
+        $clients = Client::all();
+        $categories = Categorie::all();
 
-        return view('measurement.manage', compact('measurement'));
+        return view('measurement.manage', compact('measurement','clients','categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
-        $measurement = Measurement::findOrFail($id);
-        $measurement->date = $request->input('date');
-        $measurement->clients_id = $request->input('clients_id');
-        $measurement->categories_id = $request->input('categories_id');
-        $measurement->description = $request->input('description');
-        $measurement->shoulder = $request->input('shoulder');
-        $measurement->back = $request->input('back');
-        $measurement->sleeve = $request->input('sleeve');
-        $measurement->lap = $request->input('lap');
-        $measurement->collar = $request->input('collar');
-        $measurement->chest = $request->input('chest');
-        $measurement->armhole = $request->input('armhole');
-        $measurement->long = $request->input('long');
-        $measurement->neck = $request->input('neck');
-        $measurement->waist = $request->input('waist');
-        $measurement->bottom = $request->input('bottom');
-        $measurement->length = $request->input('length');
-        $measurement->top = $request->input('top');
-        $measurement->short = $request->input('short');
-        $measurement->trouser = $request->input('trouser');
-        $measurement->hip = $request->input('hip');
-        $measurement->inches = $request->input('inches');
-        $measurement->other = $request->input('other');
-        $measurement->save();
-
-        return redirect()->back()->with('success', 'Measurement updated successfully.');
-    }
+    
+     public function update(Request $request, Measurement $measurement)
+     {
+         $request->validate([
+             'date' =>'required',
+             'clients_id' => 'required',
+             'categories_id' => 'required',
+ 
+         ]);
+         $measurement->fill($request->post())->save();
+         return redirect()->route('measurement.index')->with('success measurement updated successfully');
+     }
     /**
      * Remove the specified resource from storage.
      */
