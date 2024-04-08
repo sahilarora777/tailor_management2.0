@@ -14,7 +14,7 @@ class MeasurementController extends Controller
      */
     public function index()
     {
-      $measurements = Measurement::with('clients','category')->paginate(2);
+      $measurements = Measurement::with('clients','category')->paginate(10);
         return view('measurement.index', compact('measurements'));
     }
 
@@ -39,24 +39,8 @@ class MeasurementController extends Controller
         $measurement->clients_id = $request->input('clients_id');
         $measurement->categories_id = $request->input('categories_id');
         $measurement->description = $request->input('description');
-        $measurement->shoulder = $request->input('shoulder');
-        $measurement->back = $request->input('back');
-        $measurement->sleeve = $request->input('sleeve');
-        $measurement->lap = $request->input('lap');
-        $measurement->collar = $request->input('collar');
-        $measurement->chest = $request->input('chest');
-        $measurement->armhole = $request->input('armhole');
-        $measurement->long = $request->input('long');
-        $measurement->neck = $request->input('neck');
-        $measurement->waist = $request->input('waist');
-        $measurement->bottom = $request->input('bottom');
-        $measurement->length = $request->input('length');
-        $measurement->top = $request->input('top');
-        $measurement->short = $request->input('short');
-        $measurement->trouser = $request->input('trouser');
-        $measurement->hip = $request->input('hip');
-        $measurement->inches = $request->input('inches');
-        $measurement->other = $request->input('other');
+        $measurement->name = $request->input('name');
+      
         $measurement->save();
 
         return redirect()->route('measurement.index')->with('success', 'measurement store successfully');

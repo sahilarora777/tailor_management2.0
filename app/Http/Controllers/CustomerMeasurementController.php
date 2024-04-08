@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\category;
-use App\Models\Categorie;
+use App\Models\CustomerMeasurement;
 use Illuminate\Http\Request;
 
-class CategorieController extends Controller
+class CustomerMeasurementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class CategorieController extends Controller
         $search_text = $request->search_text;
 
         // Start with the query builder instance
-        $query = Categorie::query();
+        $query = CustomerMeasurement::query();
 
         if ($search_text) {
             $query->where('name', 'like', '%' . $search_text . '%')
@@ -26,20 +25,19 @@ class CategorieController extends Controller
         }
 
         // Paginate the query results
-        $categories = $query->paginate(5);
+        $measurements = $query->paginate(5);
 
         // Append the query parameters to the pagination links
-        $categories->appends(request()->query());
-
-        return view('category.index', compact('categories'));
+        $measurements->appends(request()->query());
+        return view ('customer_measurement.index',compact('measurements'));
     }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('category.add');
-
+        return view ('customer_measurement.create');
     }
 
     /**
@@ -52,16 +50,15 @@ class CategorieController extends Controller
             'status' => 'required',
 
         ]);
-        Categorie::create($request->post());
-
-        return redirect()->route('category.index')->with('success category updated successfully');
+        CustomerMeasurement::create($request->post());
+        return redirect()->route('customer_measurement.index')->with('success category updated successfully');
 
     }
 
     /**
-     * Display the  resource.
+     * Display the specified resource.
      */
-    public function show(Categorie $category)
+    public function show(CustomerMeasurement $customerMeasurement)
     {
         //
     }
@@ -69,32 +66,32 @@ class CategorieController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categorie $category)
+    public function edit(CustomerMeasurement $customerMeasurement)
     {
+        return view('customer_measurement.manage',compact('customerMeasurement'));
 
-        return view('category.manage', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categorie $category)
+    public function update(Request $request, CustomerMeasurement $customerMeasurement)
     {
         $request->validate([
             'name' => 'required',
             'status' => 'required',
 
         ]);
-        $category->fill($request->post())->save();
-        return redirect()->route('category.index')->with('success category updated successfully');
+        $customerMeasurement::create($request->post())->save();
+        return redirect()->route('customer_measurement.index')->with('success category updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categorie $category)
+    public function destroy(CustomerMeasurement $customerMeasurement)
     {
-        $category->delete();
-        return redirect()->route('category.index');
+        $customerMeasurement->delete();
+        return redirect()->route('customer_measurement.index');
     }
 }

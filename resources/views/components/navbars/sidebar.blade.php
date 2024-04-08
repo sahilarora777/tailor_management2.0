@@ -10,8 +10,6 @@
     </div>
         <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0 d-flex text-wrap align-items-center" href="{{ route('dashboard') }}">
-
-
         </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
@@ -34,7 +32,7 @@
             <!-- Clients dropdown -->
             <li class="nav-item dropdown mt-3">
                 <a class="nav-link dropdown-toggle text-white {{ $activePage == 'AddClient' ? 'active bg-gradient-primary' : '' }}" href="#" id="clientsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons opacity-10">table_view</i>
+                    <i class="material-icons opacity-10">person</i>
                     <span class="nav-link-text ms-1">Clients</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="clientsDropdown" style="margin-top: 12;"> 
@@ -45,7 +43,7 @@
             <!-- Brand dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons opacity-10">table_view</i>
+                    <i class="material-icons opacity-10">branding_watermark</i>
                     <span class="nav-link-text ms-1">Brand</span>
                 </a>
                 <div class="dropdown-menu" >
@@ -57,8 +55,8 @@
                 <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons opacity-10">category</i>
                     <span class="nav-link-text ms-1">Categories</span>
-                </a>
-                <div class="dropdown-menu" >
+                </a> 
+                <div class="dropdown-menu" ->
                     <a class="dropdown-item" href="/category/create">Add Category</a>
                     <a class="dropdown-item" href="/category">Manage Categories</a>
                 </div>
@@ -69,33 +67,53 @@
                     <i class="material-icons opacity-10">inventory_2</i>
                     <span class="nav-link-text ms-1">Services/products</span>
                 </a>
-                <div class="dropdown-menu" >
+                <div class="dropdown-menu">
                     <a class="dropdown-item" href="/product/create">Add Services/Products</a>
                     <a class="dropdown-item" href="/product">Manage Services/Products</a>
                 </div>
             </li>
             <!-- Other pages -->
-
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons opacity-10">supervisor_account</i>
+                    <span class="nav-link-text ms-1">Customer/Managment</span>
+                </a>
+                <div class="dropdown-menu" >
+                    <a class="dropdown-item" href="/customer_measurement/create">Add Services/Products</a>
+                    <a class="dropdown-item" href="/customer_measurement">Manage Services/Products</a>
+                </div>
+            </li>
 
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons opacity-10">ruler</i>
-                    <span class="nav-link-text ms-1">Measurement</span>
+                    <span class="nav-link-text ms-1">Measurment</span>
                 </a>
                 <div class="dropdown-menu" >
                     <a class="dropdown-item" href="/measurement/create">Add Measurement</a>
                     <a class="dropdown-item" href="/measurement">Manage Measurement</a>
                 </div>
             </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons opacity-10">category</i>
+                    <span class="nav-link-text ms-1">Category Measurement</span>
+                </a>
+                <div class="dropdown-menu" >
+                    <a class="dropdown-item" href="/category_measurement/create">Add Measurement</a>
+                    <a class="dropdown-item" href="/category_measurement">Manage Measurement</a>
+                </div>
+            </li>
 
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'billing' ? 'active bg-gradient-primary' : '' }}" href="{{ route('billing') }}">
                     <i class="material-icons opacity-10">receipt_long</i>
                     <span class="nav-link-text ms-1">Billing</span>
                 </a>
-            </li>
+            </li> -->
             <!-- Add more pages here -->
         </ul>
     </div>
