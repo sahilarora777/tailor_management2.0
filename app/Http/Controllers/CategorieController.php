@@ -97,4 +97,11 @@ class CategorieController extends Controller
         $category->delete();
         return redirect()->route('category.index');
     }
+    public function stores(Request $request) {
+        $category = new Categorie();
+        $category->name = $request->input('name');
+        $category->save();
+    
+        return response()->json(['id' => $category->id]);
+    }
 }
