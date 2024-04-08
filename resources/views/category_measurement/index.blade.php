@@ -1,72 +1,90 @@
-<div class="mt-3 col-md-6 ">
-                                <label for="measurement">Select the measurement</label>
-                                <!-- <select id="measurement" name="measurement">
-                                    <option value="measurement1">Measurement 1</option>
-                                    <option value="measurement2">Measurement 2</option>
-                                    <option value="measurement3">Measurement 3</option>
-                                </select> -->
+<x-layout bodyClass="g-sidenav-show  bg-gray-200">
+
+    <x-navbars.sidebar activePage="categories"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage="categories"></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white mx-3"><strong> View categories<strong>
                             </div>
-							     <div class="row">
-							         <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                     Chest
-	                                </label>
-	                            </div>
-	                            <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                     Sholder
-	                                </label>
-	                            </div>
-	                            <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-                                     Bust
-                                </label>
-	                            </div>
-                                <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                     Waist
-	                                </label>
-	                            </div>
-                                <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                    Hip 
-	                                </label>
-	                            </div>
-							     </div>
-                                 <div class="row">
-							         <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                    Height
-	                                </label>
-	                            </div>
-	                            <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                     HPS
-	                                </label>
-	                            </div>
-	                            <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                     Apex
-	                                </label>
-	                            </div>
-                                <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                     Neck
-	                                </label>
-	                            </div>
-                                <div class="form-check col-md-2">
-	                                <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-	                                <label class="form-check-label" for="checkbox4">
-	                                     Sleeve Length
-	                                </label>
-	                            </div>
-							     </div>
+                        </div>
+
+                        <div class=" me-3 my-3 text-end">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('category_measurement.create') }}"><i
+                                    class="material-icons text-sm">add</i>&nbsp;&nbsp;Add
+                                Categories</a>
+                        </div>
+
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+
+                                <form action="{{ route('category_measurement.index') }}" class="search-form">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-md-6 mb-2 ml-4"> 
+                                            <input type="text" name="search_text" class="form-control" placeholder="Search...">
+                                        </div>
+
+                                        <div class="col-md-6 mb-2 ">
+                                            <div class="box">
+                                                <button type="submit" class="btn btn-primary btn-custom">Search</button>
+                                                <a href="{{ route('category_measurement.index') }}" class="btn btn-warning btn-custom">Clear</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($category_measurements as $category_measurement)
+                                        <tr>
+                                            <td>{{ $category_measurement->category_id }}</td>
+                                            <td>{{ $category_measurement->measurement_id }}</td>
+                                            <td>
+                                                <a rel="tooltip" class="btn btn-success btn-link"
+                                                   href="{{ route('category_measurement.edit', $category_measurement->id) }}" data-original-title=""
+                                                   title="">
+                                                    <i class="material-icons">edit</i>
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                                </td>
+                                                 <td>
+                                                <form action="{{ route('category_measurement.destroy', $category_measurement->id) }}" method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-link"><i class="material-icons ">delete</i></button>
+                                                </form>
+                                                 </td>
+                                           
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+    </main>
+    <x-plugins></x-plugins>
+
+</x-layout>

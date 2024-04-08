@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category_Measurement extends Model
+class CategoryMeasurement extends Model
 {
     use HasFactory;
     protected $guarded = [];
     public function category(){
-        return $this->belongsTo(Categorie::class,'categories_id');
+        return $this->morphTo();
     }
     public function measurement(){
-        return $this->belongsTo(Measurement::class,'measurements_id');
+        return $this->morphTo();
     }
 }

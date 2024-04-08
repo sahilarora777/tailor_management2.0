@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="categories"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="Measurement"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Customer Management"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -64,7 +64,7 @@
                                                 <form action="{{ route('customer_measurement.destroy', $measurement->id) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-link"> <i class="material-icons ">delete</i></button>
                                                 </form>
 
                                             </td>

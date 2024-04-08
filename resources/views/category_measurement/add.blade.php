@@ -28,14 +28,14 @@
                                         <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
-</div>
+                            </div>
                             @foreach($measurements as $measurement)
-    <div class="form-check form-check-inline">
-        <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements[]" value="{{ $measurement->id }}" class="form-check-input">
-        <label for="measurement{{ $measurement->id }}" class="form-check-label">{{ $measurement->name }}</label>
-    </div>
-@endforeach
-<button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements_id[]" value="{{ $measurement->id }}" class="form-check-input">
+                                    <label for="measurement{{ $measurement->id }}" class="form-check-label">{{ $measurement->name }}</label>
+                                </div>
+                            @endforeach
+                            <button type="submit" class="btn btn-primary">Submit</button>
 
                         </form>
                     </div>

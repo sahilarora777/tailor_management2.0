@@ -1,13 +1,13 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <x-navbars.sidebar activePage="user-profile"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="categories"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
-        <!-- Navbar -->
-        <x-navbars.navs.auth titlePage='Add  categories'></x-navbars.navs.auth>
+        <!-- Navbar --> 
+        <x-navbars.navs.auth titlePage='Categories' activePage="categories"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid px-2 px-md-4">
             <div class="page-header min-height-300 border-radius-xl mt-4"
-                 style="background-image: url('https://st3.depositphotos.com/11396296/18131/i/450/depositphotos_181314690-stock-photo-doll-clothing-store-background.jpg');">
+                 style="background-image: url('https://t3.ftcdn.net/jpg/04/42/34/38/360_F_442343862_RJ3GvLApKbrtlIA54ZsKvpYdISfLCjI6.jpg');">
                 <span class="  bg-gradient-primary  opacity-6"></span>
             </div>
             <div class="card card-body mx-3 mx-md-4 mt-n6">
@@ -18,13 +18,6 @@
                                  class="w-100 border-radius-lg shadow-sm">
                         </div>
                     </div>
-                        {{--                    <div class="col-auto my-auto">--}}
-                        {{--                        <div class="h-100">--}}
-                        {{--                            <h5 class="mb-1">--}}
-                        {{--                                {{ auth()->user()->name }}--}}
-                        {{--                            </h5>--}}
-                        {{--                         --}}
-
                         <!DOCTYPE html>
                         <html>
                         <head>
@@ -106,14 +99,14 @@
                             </div>
 
                             <div class="container">
-                                <h2 class="text-center mb-4">Add  category</h2>
+                                <h2 class="text-center mb-4">Add  Category</h2>
 
                                     <div class="col-md-8">
                                             <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
 
                                                 <div class="mb-3">
-                                                    <label for="name" class="form-label">category Name</label>
+                                                    <label for="name" class="form-label">Category Name</label>
                                                     <input type="text" id="name" name="name" class="form-control" required>
                                                 </div>
 

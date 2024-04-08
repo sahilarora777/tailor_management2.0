@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use App\Models\Category_Measurement;
+use App\Models\CategoryMeasurement;
 use App\Models\Client;
 use App\Models\Measurement;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class CategoryMeasurementController extends Controller
      */
     public function index()
     {
-        return view ('category_measurement.index');
+        $category_measurements=CategoryMeasurement::all();
+        return view ('category_measurement.index',compact('category_measurements'));
     }
 
     /**
@@ -24,8 +26,8 @@ class CategoryMeasurementController extends Controller
     public function create()
     {
          $clients = Client::all();
-         $categories = Categorie::all();
-           $measurements = Measurement::all();
+          $categories = Categorie::all();
+         $measurements = Measurement::all();
 
         return view ('category_measurement.add',compact('clients','categories','measurements'));
     }
@@ -35,17 +37,21 @@ class CategoryMeasurementController extends Controller
      */
     public function store(Request $request)
     {
-    $categoryMeasurement = new Category_Measurement();
-     $categoryMeasurement->id = $request->id;
-     $categoryMeasurement->clients_id = $request->clients_id;
-    $categoryMeasurement->save();
+       $measurement_ids =  $request->measurements_id;
+       foreach($measurement_ids as $measurement_id)
+       {
+    $category_measurements = new CategoryMeasurement();
+     $category_measurements->category_id = $request->input('categories_id');
+     $category_measurements->measurement_id = $measurement_id;
+    $category_measurements->save();
+       }
     return redirect()->route('category_measurement.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category_Measurement $category_Measurement)
+    public function show(CategoryMeasurement $category_Measurement)
     {
         //
     }
@@ -53,7 +59,7 @@ class CategoryMeasurementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category_Measurement $category_Measurement)
+    public function edit(CategoryMeasurement $category_Measurement)
     {
         //
     }
@@ -61,7 +67,7 @@ class CategoryMeasurementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category_Measurement $category_Measurement)
+    public function update(Request $request, CategoryMeasurement $category_Measurement)
     {
         //
     }
@@ -69,7 +75,7 @@ class CategoryMeasurementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category_Measurement $category_Measurement)
+    public function destroy(CategoryMeasurement $category_Measurement)
     {
         //
     }
