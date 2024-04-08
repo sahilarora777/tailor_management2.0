@@ -14,7 +14,7 @@ class MeasurementController extends Controller
      */
     public function index()
     {
-      $measurements = Measurement::with('clients','category')->paginate(2);
+      $measurements = Measurement::with('clients','category')->paginate(5);
         return view('measurement.index', compact('measurements'));
     }
 
@@ -39,7 +39,8 @@ class MeasurementController extends Controller
 {
     $request->validate([ 
         'date' =>'required',
-             'clients_id' => 'required',
+        'name' =>'required',
+        'clients_id' => 'required',
              'categories_id' => 'required',
 
     ]);
@@ -81,6 +82,7 @@ class MeasurementController extends Controller
      {
          $request->validate([
              'date' =>'required',
+             'name' =>'required',
              'clients_id' => 'required',
              'categories_id' => 'required',
  

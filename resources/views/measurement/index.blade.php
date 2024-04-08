@@ -26,6 +26,7 @@
                                 <th scope="col">Client</th>
                                 <th scope="col">Categories</th>
                                 <th scope="col">Date</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                 <td>{{ $measurement->clients->name}}</td>
                                 <td>{{ $measurement->category?->name}}</td>
                                 <td>{{ $measurement->date }}</td>
+                                <td>{{ $measurement->name }}</td>
                                 <td>
                                     <a href="{{ route('measurement.show', $measurement->id) }}" class="btn btn-primary btn-sm">View</a>
                                     <a href="{{ route('measurement.edit', $measurement->id) }}" class="btn btn-success btn-sm">Edit</a>

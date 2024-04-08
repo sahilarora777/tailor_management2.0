@@ -48,6 +48,12 @@
                                     <label for="date" class="form-label">Date:</label>
                                     <input type="date" name="date" id="date" class="form-control">
                                 </div>
+
+                                
+                                <div class="col-md-4">
+                                    <label for="name" class="form-label">Name:</label>
+                                    <input type="name" name="name" id="name" class="form-control">
+                                </div>
                           
                                 <!DOCTYPE html>
                                 <html lang="en">

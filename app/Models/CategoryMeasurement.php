@@ -9,10 +9,12 @@ class CategoryMeasurement extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
     public function category(){
-        return $this->morphTo();
+        return $this->belongsTo(Categorie::class,'category_id');
     }
+
     public function measurement(){
-        return $this->morphTo();
+        return $this->belongsTo(Measurement::class,'measurement_id');
     }
 }
