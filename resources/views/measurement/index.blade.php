@@ -53,7 +53,6 @@
                     </table>
                 </div>
                 <div class="mt-3">
-                    {{$measurements->links()}}
                 </div>
             </div>
         </div>
@@ -61,3 +60,4 @@
     <x-plugins></x-plugins>
 
 </x-layout>
+

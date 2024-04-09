@@ -17,7 +17,7 @@ class CategoryMeasurementController extends Controller
     public function index()
     {
      $categories = Categorie::all(); 
-        $category_measurements=CategoryMeasurement::with('category','measurement')->get();
+       $category_measurements=CategoryMeasurement::with('category','measurement')->get();
         return view ('category_measurement.index',compact('category_measurements','categories'));
     }
 
@@ -28,7 +28,7 @@ class CategoryMeasurementController extends Controller
     {
          $clients = Client::all();
           $categories = Categorie::all();
-         $measurements = Measurement::all();
+           $measurements = Measurement::all();
 
         return view ('category_measurement.add',compact('clients','categories','measurements'));
     }

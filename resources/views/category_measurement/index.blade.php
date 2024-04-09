@@ -42,7 +42,6 @@
                                     <thead class="thead-dark">
                                     <tr>
                                         <th>Id</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                         <th>Action</th>
                                     </tr>

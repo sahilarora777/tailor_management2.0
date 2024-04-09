@@ -34,15 +34,13 @@ class CategorieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request ,Categorie $category)
    
    {// Validate the request
 $request->validate([
     'name' => 'required',
     'status' => 'required',
 ]);
-
-// Save the main category without 'measurements_id'
 $category = Categorie::create([
     'name' => $request->input('name'),
     'status' => $request->input('status'),

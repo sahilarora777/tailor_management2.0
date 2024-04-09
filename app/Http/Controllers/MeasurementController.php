@@ -14,8 +14,8 @@ class MeasurementController extends Controller
      */
     public function index()
     {
-      $measurements = Measurement::with('clients','category')->paginate(5);
-        return view('measurement.index', compact('measurements'));
+        $measurements = Measurement::all();
+        return view('measurement.index',compact('measurements'));
     }
 
     /**

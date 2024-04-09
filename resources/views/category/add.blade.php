@@ -104,7 +104,6 @@
                                     <div class="col-md-8">
                                             <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
-
                                                 <div class="form-group">
                                     <label for="categories_id">Category:</label>
                                     <select name="categories_id" id="categories_id" class="form-control" required>
