@@ -105,10 +105,24 @@
                                             <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
 
-                                                <div class="mb-3">
-                                                    <label for="name" class="form-label">Category Name</label>
-                                                    <input type="text" id="name" name="name" class="form-control" required>
-                                                </div>
+                                                <div class="form-group">
+                                    <label for="categories_id">Category:</label>
+                                    <select name="categories_id" id="categories_id" class="form-control" required>
+                                        <option value="" selected>Select</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                                @foreach($measurements as $measurement)
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements_id[]" value="{{ $measurement->id }}" class="form-check-input">
+                                    <label for="measurement{{ $measurement->id }}" class="form-check-label">{{ $measurement->name }}</label>
+                                </div>
+                            @endforeach
+
+
 
                                                 <div class="mb-3">
                                                     <label for="status" class="form-label">Status</label>

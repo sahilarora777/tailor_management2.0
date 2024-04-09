@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\Categorie;
+use App\Models\Measurement;
 use Illuminate\Http\Request;
 
 class CategorieController extends Controller
@@ -13,23 +14,9 @@ class CategorieController extends Controller
      */
     public function index(Request $request)
     {
-        $search_text = $request->search_text;
-
         // Start with the query builder instance
-        $query = Categorie::query();
+         $categories = Categorie::with('measurement')->get();
 
-        if ($search_text) {
-            $query->where('name', 'like', '%' . $search_text . '%')
-                ->orWhere('status', 'like', '%' . $search_text . '%')
-
-                ->get();
-        }
-
-        // Paginate the query results
-        $categories = $query->paginate(5);
-
-        // Append the query parameters to the pagination links
-        $categories->appends(request()->query());
 
         return view('category.index', compact('categories'));
     }
@@ -38,7 +25,9 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        return view('category.add');
+        $categories = Categorie::all();
+        $measurements = Measurement::all();
+        return view('category.add',compact('measurements','categories'));
 
     }
 
@@ -46,17 +35,25 @@ class CategorieController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'status' => 'required',
+   
+   {// Validate the request
+$request->validate([
+    'name' => 'required',
+    'status' => 'required',
+]);
 
-        ]);
-        Categorie::create($request->post());
+// Save the main category without 'measurements_id'
+$category = Categorie::create([
+    'name' => $request->input('name'),
+    'status' => $request->input('status'),
+    'measurements_id' => json_encode($request->input('measurements_id')),
+]);
 
-        return redirect()->route('category.index')->with('success category updated successfully');
+return redirect()->route('category.index')->with('success', 'Category updated successfully');
 
-    }
+
+
+}
 
     /**
      * Display the  resource.
@@ -71,8 +68,9 @@ class CategorieController extends Controller
      */
     public function edit(Categorie $category)
     {
+        $measurements = Measurement::all();
 
-        return view('category.manage', compact('category'));
+        return view('category.manage', compact('category','measurements'));
     }
 
     /**
@@ -83,6 +81,7 @@ class CategorieController extends Controller
         $request->validate([
             'name' => 'required',
             'status' => 'required',
+            'measurements_id' => 'required',
 
         ]);
         $category->fill($request->post())->save();

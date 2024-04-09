@@ -81,10 +81,10 @@ class CategoryMeasurementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CategoryMeasurement $category_Measurement)
-    {
-        $category_Measurement->delete();
-        return redirect()->route('category_measurement.index');
+    public function destroy(CategoryMeasurement $category_measurement)
+{
+    $category_measurement->delete();
+    return redirect()->route('category_measurement.index');
+}
 
-    }
 }

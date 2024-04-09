@@ -15,13 +15,5 @@ class Measurement extends Model
         return $this->belongsTo(Client::class,'clients_id');
     }
 
-    public function category(){
-        return $this->belongsTo(Categorie::class,'categories_id');
-    }
-
-    
-    public function category_measurment()
-    {
-        return $this->hasOne(Category_Measurement::class, 'category_measurements_id');
-    }
+  
 }
