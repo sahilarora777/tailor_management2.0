@@ -41,19 +41,16 @@
                                 <table class="table">
                                     <thead class="thead-dark">
                                     <tr>
-                                        <th>Category</th>
-                                        <th>Measurement</th>
+                                        <th>Id</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($category_measurements as $category_measurement)
+                                    @foreach($categories as $category_measurement)
                                         <tr>
-                                            
-                                            <td>{{ $category_measurement->category->name }}</td>
-                                            <td>{{ $category_measurement->measurement->name }}</td>
-
+                                            <td>{{ $category_measurement->name }}</td>
                                             <td>
                                                 <a rel="tooltip" class="btn btn-success btn-link"
                                                    href="{{ route('category_measurement.edit', $category_measurement->id) }}" data-original-title=""

@@ -72,18 +72,7 @@
                     <a class="dropdown-item" href="/product">Manage Services/Products</a>
                 </div>
             </li>
-            <!-- Other pages -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="material-icons opacity-10">supervisor_account</i>
-                    <span class="nav-link-text ms-1">Customer/Managment</span>
-                </a>
-                <div class="dropdown-menu" >
-                    <a class="dropdown-item" href="/customer_measurement/create">Add Services/Products</a>
-                    <a class="dropdown-item" href="/customer_measurement">Manage Services/Products</a>
-                </div>
-            </li>
-
+       
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

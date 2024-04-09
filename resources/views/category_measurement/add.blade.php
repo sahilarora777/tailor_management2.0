@@ -12,7 +12,7 @@
                         <!-- Add any content for the left column if needed -->
                     </div>
                     <div class="col-md-6 text-end">
-                        <a href="/measurement" class="btn btn-secondary">Back</a>
+                        <a href="/category_measurement" class="btn btn-secondary">Back</a>
                     </div>
                 </div>
                 <div class="container">

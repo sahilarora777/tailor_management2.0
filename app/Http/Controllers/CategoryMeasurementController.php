@@ -16,9 +16,9 @@ class CategoryMeasurementController extends Controller
      */
     public function index()
     {
-
+     $categories = Categorie::all(); 
         $category_measurements=CategoryMeasurement::with('category','measurement')->get();
-        return view ('category_measurement.index',compact('category_measurements'));
+        return view ('category_measurement.index',compact('category_measurements','categories'));
     }
 
     /**
@@ -60,9 +60,14 @@ class CategoryMeasurementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CategoryMeasurement $category_Measurement)
+    public function edit(CategoryMeasurement $category_measurement)
     {
-        //
+        
+        $clients = Client::all();
+        $categories = Categorie::all();
+       $measurements = Measurement::all();
+        $categoryMeasurements = CategoryMeasurement::where('category_id',$category_measurement->id)->first();
+        return view('category_measurement.manage',compact('clients','categories','measurements','categoryMeasurements','category_measurement'));
     }
 
     /**
@@ -78,6 +83,8 @@ class CategoryMeasurementController extends Controller
      */
     public function destroy(CategoryMeasurement $category_Measurement)
     {
-        //
+        $category_Measurement->delete();
+        return redirect()->route('category_measurement.index');
+
     }
 }
