@@ -28,6 +28,8 @@
                                 <th scope="col">Date</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Actions</th>
+                                <th scope="col">Actions</th>
+                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,12 +41,19 @@
                                 <td>{{ $measurement->date }}</td>
                                 <td>{{ $measurement->name }}</td>
                                 <td>
-                                    <a href="{{ route('measurement.show', $measurement->id) }}" class="btn btn-primary btn-sm">View</a>
-                                    <a href="{{ route('measurement.edit', $measurement->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                    <a href="{{ route('measurement.show', $measurement->id) }}" class="btn btn-primary"><i class="material-icons">visibility</i></a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('measurement.edit', $measurement->id) }}" class="btn btn-success btn-link">
+                                        <i class="material-icons">edit</i>
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </td>
+                                <td>
                                     <form action="{{ route('measurement.destroy', $measurement->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this measurement?')">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-link" onclick="return confirm('Are you sure you want to delete this measurement?')"> <i class="material-icons">delete</i></button>
                                     </form>
                                 </td>
                             </tr>

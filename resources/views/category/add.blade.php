@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="categories"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar --> 
-        <x-navbars.navs.auth titlePage='Categories' activePage="categories"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage='Categories' activePage=" Add Categories"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid px-2 px-md-4">
             <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -14,8 +14,7 @@
                 <div class="row gx-4 mb-2">
                     <div class="col-auto">
                         <div class="avatar avatar-xl position-relative">
-                            <img src="{{ asset('assets') }}/img/bruce-mars.jpg" alt="profile_image"
-                                 class="w-100 border-radius-lg shadow-sm">
+                           
                         </div>
                     </div>
                         <!DOCTYPE html>

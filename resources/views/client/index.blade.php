@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="Clients"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="Clients"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Clients Data"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -47,6 +47,7 @@
                                         <th>Referring</th>
                                         <th>Address</th>
                                         <th>Action</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -65,14 +66,15 @@
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
-
+                                            </td>
+                                            <td>
 
                                                 <form action="{{ route('client.destroy', $client->id) }}" method="post" style="display: inline-block;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="btn btn-danger btn-link"
                                                             data-original-title="" title="">
-                                                        <i class="material-icons">close</i>
+                                                            <i class="material-icons ">delete</i>
                                                         <div class="ripple-container"></div>
                                                     </button>
                                                 </form>

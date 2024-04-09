@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="products"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="products"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Products"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -11,7 +11,7 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white mx-3"><strong> View products<strong>
+                                <h6 class="text-white mx-3"><strong> View Products<strong>
                             </div>
                         </div>
 
@@ -48,6 +48,7 @@
                                         <th>Category</th>
                                         <th>Status</th>
                                         <th>Action</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -68,6 +69,8 @@
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
+                                            </td>
+                                            <td>
 
 
                                                 <form action="{{ route('product.destroy', $product->id) }}" method="post" style="display: inline-block;">
@@ -75,7 +78,7 @@
                                                     @method('DELETE')
                                                     <button type="button" class="btn btn-danger btn-link"
                                                             data-original-title="" title="">
-                                                        <i class="material-icons">close</i>
+                                                            <i class="material-icons ">delete</i>
                                                         <div class="ripple-container"></div>
                                                     </button>
                                                 </form>

@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="user-profile"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage='Add  brands'></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage='Add Brands'></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid px-2 px-md-4">
             <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -14,17 +14,10 @@
                 <div class="row gx-4 mb-2">
                     <div class="col-auto">
                         <div class="avatar avatar-xl position-relative">
-                            <img src="{{ asset('assets') }}/img/bruce-mars.jpg" alt="profile_image"
-                                 class="w-100 border-radius-lg shadow-sm">
+                            <!-- <img src="{{ asset('assets') }}/img/bruce-mars.jpg" alt="profile_image"
+                                 class="w-100 border-radius-lg shadow-sm"> -->
                         </div>
-                    </div>
-                        {{--                    <div class="col-auto my-auto">--}}
-                        {{--                        <div class="h-100">--}}
-                        {{--                            <h5 class="mb-1">--}}
-                        {{--                                {{ auth()->user()->name }}--}}
-                        {{--                            </h5>--}}
-                        {{--                         --}}
-
+</div>
                         <!DOCTYPE html>
                         <html>
                         <head>
@@ -106,7 +99,7 @@
                             </div>
 
                             <div class="container">
-                                <h2 class="text-center mb-4">Add  brand</h2>
+                                <h2 class="text-center mb-4">Add Your brand</h2>
 
 
                                             <form action="{{ route('brand.store') }}" method="post" enctype="multipart/form-data">

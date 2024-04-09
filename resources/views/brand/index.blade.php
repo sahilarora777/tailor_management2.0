@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="Brands"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="Brands"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Brands Type"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -43,6 +43,7 @@
                                         <th>Brand Name</th>
                                         <th>Status</th>
                                         <th>Action</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -58,15 +59,16 @@
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
-
+                                            </td>
+                                            <td>
 
                                                 <form action="{{ route('brand.destroy', $brand->id) }}" method="post" style="display: inline-block;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="btn btn-danger btn-link"
                                                             data-original-title="" title="">
-                                                        <i class="material-icons">close</i>
-                                                        <div class="ripple-container"></div>
+                                                            <i class="material-icons ">delete</i>
+                                                            <div class="ripple-container"></div>
                                                     </button>
                                                 </form>
 

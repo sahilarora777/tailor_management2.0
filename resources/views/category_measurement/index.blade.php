@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="categories"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="categories"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Categories"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -11,7 +11,7 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white mx-3"><strong> View categories<strong>
+                                <h6 class="text-white mx-3"><strong> View Categories<strong>
                             </div>
                         </div>
 
