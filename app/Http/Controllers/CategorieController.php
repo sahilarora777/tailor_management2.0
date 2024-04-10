@@ -44,7 +44,6 @@ $request->validate([
 $category = Categorie::create([
     'name' => $request->input('name'),
     'status' => $request->input('status'),
-    'measurements_id' => json_encode($request->input('measurements_id')),
 ]);
 
 return redirect()->route('category.index')->with('success', 'Category updated successfully');
@@ -79,7 +78,6 @@ return redirect()->route('category.index')->with('success', 'Category updated su
         $request->validate([
             'name' => 'required',
             'status' => 'required',
-            'measurements_id' => 'required',
 
         ]);
         $category->fill($request->post())->save();
