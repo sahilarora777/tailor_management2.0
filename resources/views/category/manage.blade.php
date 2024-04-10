@@ -18,12 +18,6 @@
                                  class="w-100 border-radius-lg shadow-sm">
                         </div>
                     </div>
-                    {{--                    <div class="col-auto my-auto">--}}
-                    {{--                        <div class="h-100">--}}
-                    {{--                            <h5 class="mb-1">--}}
-                    {{--                                {{ auth()->user()->name }}--}}
-                    {{--                            </h5>--}}
-                    {{--                         --}}
 
                     <!DOCTYPE html>
                     <html>
@@ -123,12 +117,10 @@
                                             <div class="form-group">
                                                 <label for="status">status:</label>
                                                 <select id="status" name="status" class="form-control" required>
-                                                    <option value="available" {{ $category->status === 'available' ? 'selected' : '' }}>Available</option>
-                                                    <option value="not available" {{ $category->status === ' not available' ? 'selected' : '' }}>Not Available</option>
+                                                    <option value="Active" {{ $category->status === 'Active' ? 'selected' : '' }}>Active</option>
+                                                    <option value="In Active" {{ $category->status === 'In Active' ? 'selected' : '' }}>In Active</option>
                                                 </select>
                                             </div>
-
-
                                             <input type="submit" value="Update" class="btn btn-primary">
                                         </form>
                                     </div>

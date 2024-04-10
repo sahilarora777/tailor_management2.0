@@ -105,16 +105,16 @@
                                                 @csrf
                                         
                                                 <div class="mb-3">
-                                                    <label for="category" class="form-label">Category Name</label>
-                                                    <input type="text" id="category" name="category" class="form-control" required>
+                                                    <label for="name" class="form-label">Category Name</label>
+                                                    <input type="text" id="name" name="name" class="form-control" required>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="status" class="form-label">Status</label>
                                                     <select id="status" name="status" class="form-control" required>
                                                         <option value="">Select status</option>
-                                                        <option value="available">Available</option>
-                                                        <option value="not available">Not Available</option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="In Active">In Active</option>
                                                     </select>
                                                 </div>
                                         </div>

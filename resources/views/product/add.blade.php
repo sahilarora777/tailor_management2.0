@@ -18,13 +18,6 @@
                                  class="w-100 border-radius-lg shadow-sm">
                         </div>
                     </div>
-                    {{--                    <div class="col-auto my-auto">--}}
-                    {{--                        <div class="h-100">--}}
-                    {{--                            <h5 class="mb-1">--}}
-                    {{--                                {{ auth()->user()->name }}--}}
-                    {{--                            </h5>--}}
-                    {{--                         --}}
-
                     <!DOCTYPE html>
                     <html>
                     <head>
@@ -106,7 +99,7 @@
                         </div>
 
                         <div class="container">
-                            <h2 class="text-center mb-4">Add  product</h2>
+                            <h2 class="text-center mb-4">Add Product</h2>
 
 
                             <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
@@ -158,8 +151,8 @@
                                     <label for="status" class="form-label">Status</label>
                                     <select id="status" name="status" class="form-control" required>
                                         <option value="">Select status</option>
-                                        <option value="available">Available</option>
-                                        <option value="not available">Not Available</option>
+                                        <option value="Active">Active</option>
+                                        <option value="In Active">In Active</option>
                                     </select>
                                 </div>
                         </div>

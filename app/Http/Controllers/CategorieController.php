@@ -14,10 +14,7 @@ class CategorieController extends Controller
      */
     public function index(Request $request)
     {
-        // Start with the query builder instance
-         $categories = Categorie::with('measurement')->get();
-
-
+         $categories = Categorie::all();
         return view('category.index', compact('categories'));
     }
     /**
@@ -25,9 +22,8 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        $categories = Categorie::all();
-        $measurements = Measurement::all();
-        return view('category.add',compact('measurements','categories'));
+     
+        return view('category.add');
 
     }
 
@@ -36,20 +32,12 @@ class CategorieController extends Controller
      */
     public function store(Request $request ,Categorie $category)
    
-   {// Validate the request
-$request->validate([
-    'name' => 'required',
-    'status' => 'required',
-]);
-$category = Categorie::create([
-    'name' => $request->input('name'),
-    'status' => $request->input('status'),
-]);
-
-return redirect()->route('category.index')->with('success', 'Category updated successfully');
-
-
-
+   {
+    $category = new Categorie();
+    $category->name = $request->name;
+    $category->status = $request->status;
+    $category->save();
+         return redirect()->route('category.index')->with('success', 'Category updated successfully');
 }
 
     /**

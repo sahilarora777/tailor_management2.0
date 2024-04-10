@@ -25,7 +25,9 @@
                                 <select name="categories_id" id="categories_id" class="form-control" required>
                                     <option value="" selected>--Select--</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
+                                        @if($category->status == 'Active')
+                                            <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

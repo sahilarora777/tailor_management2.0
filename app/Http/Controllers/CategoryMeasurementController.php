@@ -60,21 +60,31 @@ class CategoryMeasurementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CategoryMeasurement $category_measurement)
+    public function edit($id)
     {
         
         $clients = Client::all();
         $categories = Categorie::all();
        $measurements = Measurement::all();
-        return view('category_measurement.manage',compact('clients','categories','measurements','category_measurement'));
+       $categoryMeasurements = CategoryMeasurement::where('category_id',$id)->get();
+       return view('category_measurement.manage',compact('clients','categories','measurements','categoryMeasurements','id'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CategoryMeasurement $category)
+    public function update(Request $request, $id)
     {
-       
+        $measurement_ids =  $request->measurements_id;
+        CategoryMeasurement::where('category_id', $id)->delete();
+        foreach($measurement_ids as $measurement_id)
+        {
+            $category_measurements = new CategoryMeasurement();
+            $category_measurements->category_id = $id;
+            $category_measurements->measurement_id = $measurement_id;
+            $category_measurements->save();
+        }
+        return redirect()->route('category_measurement.index'); 
     }
 
     /**

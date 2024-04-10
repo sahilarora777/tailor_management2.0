@@ -35,20 +35,7 @@
                                         @endforeach
                                         <option value="new">Add New Client</option> <!-- Add New Client option -->
                                     </select>
-                                </div>
-
-                                
-                                <div class="mb-3">
-                                                    <label for="status" class="form-label">Status</label>
-                                                    <select id="status" name="status" class="form-control" required>
-                                                        <option value="">Select status</option>
-                                                        <option value="available">Available</option>
-                                                        <option value="not available">Not Available</option>
-                                                    </select>
-                                                </div>
-                                        </div>
-                               
-                          
+                                </div>                          
                                 <!DOCTYPE html>
                                 <html lang="en">
                                 <head>
@@ -85,16 +72,16 @@ $(document).ready(function() {
     $('#categories_id').selectize({
         create: function(input, callback) {
             $.ajax({
-                url: '/store-category', // Replace with your backend route to store the category
+                url: '/customer_measurement/add', 
                 method: 'POST',
                 headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },  
                 data: {
-                    name: input // Pass the new category name to the backend
+                    name: input 
                 },
                 success: function(response) {
-                    callback({ value: response.id, text: input }); // Update the dropdown with the new category
+                    callback({ value: response.id, text: input }); 
                 },
                 error: function(xhr, status, error) {
                     console.error(error);

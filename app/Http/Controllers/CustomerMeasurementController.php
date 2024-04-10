@@ -102,4 +102,8 @@ class CustomerMeasurementController extends Controller
         $customerMeasurement->delete();
         return redirect()->route('customer_measurement.index');
     }
+    public function category()
+    {
+     return $categories = Categorie::with('clients','measurement');
+    }
 }
