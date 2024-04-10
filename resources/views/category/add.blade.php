@@ -112,16 +112,12 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                                 @foreach($measurements as $measurement)
                                 <div class="form-check form-check-inline">
                                     <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements_id[]" value="{{ $measurement->id }}" class="form-check-input">
                                     <label for="measurement{{ $measurement->id }}" class="form-check-label">{{ $measurement->name }}</label>
                                 </div>
                             @endforeach
-
-
-
                                                 <div class="mb-3">
                                                     <label for="status" class="form-label">Status</label>
                                                     <select id="status" name="status" class="form-control" required>

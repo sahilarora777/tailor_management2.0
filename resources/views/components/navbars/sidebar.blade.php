@@ -1,8 +1,11 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
         <div class="avatar avatar-xl position-relative">
-            <img src="{{ asset('assets') }}/img/shop-removebg-preview.png" alt="profile_image" class="w-120 border-radius-lg shadow-sm" style="width: 170%; margin-bottom: auto; margin-left: 120px;">
-        </div>
+        <a href=" {{ route('dashboard') }} ">
+
+                <img src="{{ asset('assets') }}/img/shop-removebg-preview.png" alt="profile_image" class="w-120 border-radius-lg shadow-sm" style="width: 170%; margin-top: 60px; margin-left: 50px;">
+</a>
+            </div>
     </div>
     <div class="sidenav-body">
         <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -19,7 +22,6 @@
                         <span class="nav-link-text ms-1">Dashboard</span>
                     </a>
                 </li>
-                <!-- Clients subcontent -->
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="clientsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons opacity-10">person</i>
@@ -96,3 +98,4 @@
         </div>
     </div>
 </aside>
+

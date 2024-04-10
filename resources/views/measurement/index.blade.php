@@ -37,7 +37,7 @@
                             <tr>
                                 <th scope="row">{{ $measurement->id }}</th>
                                 <td>{{ $measurement->clients->name}}</td>
-                                <td>{{ $measurement->category?->name}}</td>
+                                <td>{{ $measurement->categories_id}}</td>
                                 <td>{{ $measurement->date }}</td>
                                 <td>{{ $measurement->name }}</td>
                                 <td>
