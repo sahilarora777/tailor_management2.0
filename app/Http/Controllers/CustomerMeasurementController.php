@@ -26,8 +26,7 @@ class CustomerMeasurementController extends Controller
     {
         $clients = Client::all();
         $categories = Categorie::all();
-        $measurements = Measurement::all();
-        return view ('customer_measurement.add',compact('clients','categories','measurements'));
+        return view ('customer_measurement.add',compact('clients','categories'));
     }
 
     /**
@@ -38,9 +37,6 @@ class CustomerMeasurementController extends Controller
         $request->validate([
             'clients_id' => 'required',
             'categories_id' => 'required',
-            // 'measurements_id' => 'required',
-            'payment' => 'required',
-            'date' => 'required',
             'status' => 'required',
 
         ]);

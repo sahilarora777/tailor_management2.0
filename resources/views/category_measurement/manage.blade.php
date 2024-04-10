@@ -33,7 +33,7 @@
 
 @foreach($measurements as $measurement)
     <div class="form-check form-check-inline">
-        <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements_id[]" value="{{ $measurement->id }}" class="form-check-input" @if($measurements && in_array($measurement->id, $categoryMeasurements->pluck('measurement_id')->toArray())) checked @endif>
+        <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements_id[]" value="{{ $measurement->id }}" class="form-check-input" @if($measurements && in_array($measurement->id, $category->pluck('measurements_id')->toArray())) checked @endif>
         <label for="measurement{{ $measurement->id }}" class="form-check-label">{{ $measurement->name }}</label>
     </div>
 @endforeach

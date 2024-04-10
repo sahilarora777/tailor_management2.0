@@ -16,6 +16,11 @@ class Categorie extends Model
     {
         return $this->hasOne(Product::class, 'product_id');
     }
+    
+    public function customer_measurement()
+    {
+        return $this->hasOne(CustomerMesaurement::class, 'customer_measurement_id');
+    }
    
     
     public function measurement(){

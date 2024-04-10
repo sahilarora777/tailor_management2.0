@@ -18,7 +18,7 @@
                         <div class=" me-3 my-3 text-end">
                             <a class="btn bg-gradient-dark mb-0" href="{{ route('customer_measurement.create') }}"><i
                                     class="material-icons text-sm">add</i>&nbsp;&nbsp;Add
-                                Categories</a>
+                                Measurements</a>
                         </div>
 
                         <div class="card-body px-0 pb-2">
@@ -42,17 +42,19 @@
                                     <thead class="thead-dark">
                                     <tr>
                                         <th>Id</th>
-                                        <th>categories Name</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                        <th>Action</th>
+                                     <th>Clients</th>                        
+                                     <th>Category</th>                        
+                                     <th>Status</th>
+                                     <th>Action</th>
+                                    <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($customer_measurements as $customer_measurement)
                                         <tr>
                                             <td>{{ $customer_measurement->id }}</td>
-                                            <td>{{ $customer_measurement->name }}</td>
+                                            <td>{{ $customer_measurement->clients }}</td>
+                                            <td>{{ $customer_measurement->category }}</td>
                                             <td>{{ $customer_measurement->status }}</td>
                                             <td>
                                                 <a rel="tooltip" class="btn btn-success btn-link"
