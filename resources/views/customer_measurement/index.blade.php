@@ -16,7 +16,7 @@
                         </div>
 
                         <div class=" me-3 my-3 text-end">
-                            <a class="btn bg-gradient-dark mb-0" href="{{ route('category.create') }}"><i
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('customer_measurement.create') }}"><i
                                     class="material-icons text-sm">add</i>&nbsp;&nbsp;Add
                                 Categories</a>
                         </div>
@@ -24,7 +24,7 @@
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
 
-                                <form action="{{ route('category.index') }}" class="search-form">
+                                <form action="{{ route('customer_measurement.index') }}" class="search-form">
                                     <div class="form-row align-items-center">
                                         <div class="col-md-6 mb-2 ml-4"> 
                                             <input type="text" name="search_text" class="form-control" placeholder="Search...">
@@ -33,7 +33,7 @@
                                         <div class="col-md-6 mb-2 ">
                                             <div class="box">
                                                 <button type="submit" class="btn btn-primary btn-custom">Search</button>
-                                                <a href="{{ route('category.index') }}" class="btn btn-warning btn-custom">Clear</a>
+                                                <a href="{{ route('customer_measurement.index') }}" class="btn btn-warning btn-custom">Clear</a>
                                             </div>
                                         </div>
                                     </div>
@@ -49,21 +49,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($customer_measurements as $customer_measurement)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->status }}</td>
+                                            <td>{{ $customer_measurement->id }}</td>
+                                            <td>{{ $customer_measurement->name }}</td>
+                                            <td>{{ $customer_measurement->status }}</td>
                                             <td>
                                                 <a rel="tooltip" class="btn btn-success btn-link"
-                                                   href="{{ route('category.edit', $category->id) }}" data-original-title=""
+                                                   href="{{ route('customer_measurement.edit', $customer_measurement->id) }}" data-original-title=""
                                                    title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
                                                 </td>
                                                  <td>
-                                                <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display: inline;">
+                                                <form action="{{ route('customer_measurement.destroy', $customer_measurement->id) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-link"><i class="material-icons ">delete</i></button>

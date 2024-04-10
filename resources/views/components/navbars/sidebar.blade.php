@@ -89,6 +89,19 @@
 
                     </div>
                 </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="categoryMeasurementDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons opacity-10">Customer</i>
+                        <span class="nav-link-text ms-1">Custromer Measurement</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="categoryMeasurementDropdown" id="categoryMeasurementSubcontent">
+                        <a class="dropdown-item text-info" href="/customer_measurement/create">Add CustomerMeasurement</a>
+                        <a class="dropdown-item text-success" href="/customer_measurement">Manage CustomerMeasurement</a>
+
+                    </div>
+                </li>
                 <li class="nav-item">
                    
                    

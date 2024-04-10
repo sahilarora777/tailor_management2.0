@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
+use App\Models\Client;
+use App\Models\Measurement;
 use App\Models\CustomerMeasurement;
 use Illuminate\Http\Request;
 
@@ -12,24 +15,8 @@ class CustomerMeasurementController extends Controller
      */
     public function index(Request $request)
     {
-        $search_text = $request->search_text;
-
-        // Start with the query builder instance
-        $query = CustomerMeasurement::query();
-
-        if ($search_text) {
-            $query->where('name', 'like', '%' . $search_text . '%')
-                ->orWhere('status', 'like', '%' . $search_text . '%')
-
-                ->get();
-        }
-
-        // Paginate the query results
-        $measurements = $query->paginate(5);
-
-        // Append the query parameters to the pagination links
-        $measurements->appends(request()->query());
-        return view ('customer_measurement.index',compact('measurements'));
+       $customer_measurements = CustomerMeasurement::all();
+        return view ('customer_measurement.index',compact('customer_measurements'));
     }
 
     /**
@@ -37,7 +24,10 @@ class CustomerMeasurementController extends Controller
      */
     public function create()
     {
-        return view ('customer_measurement.create');
+        $clients = Client::all();
+        $categories = Categorie::all();
+        $measurements = Measurement::all();
+        return view ('customer_measurement.add',compact('clients','categories','measurements'));
     }
 
     /**
@@ -46,7 +36,11 @@ class CustomerMeasurementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'clients_id' => 'required',
+            'categories_id' => 'required',
+            // 'measurements_id' => 'required',
+            'payment' => 'required',
+            'date' => 'required',
             'status' => 'required',
 
         ]);
