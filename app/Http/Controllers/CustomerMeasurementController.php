@@ -56,25 +56,43 @@ class CustomerMeasurementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CustomerMeasurement $customerMeasurement)
+    public function edit($id)
     {
-        return view('customer_measurement.manage',compact('customerMeasurement'));
-
+        $customer_measurement = CustomerMeasurement::findOrFail($id);
+        $clients = Client::all(); 
+        $categories = Categorie::all();
+        return view('customer_measurement.manage', compact('customer_measurement', 'clients', 'categories'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CustomerMeasurement $customerMeasurement)
+    public function update(Request $request, $id)
     {
+        // Validate the incoming request data
         $request->validate([
-            'name' => 'required',
+            'clients_id' => 'required',
             'status' => 'required',
-
+            'categories_id' => 'required',
+            // Add more validation rules as needed
         ]);
-        $customerMeasurement::create($request->post())->save();
-        return redirect()->route('customer_measurement.index')->with('success category updated successfully');
+
+        // Find the customer_measurement instance by its ID
+        $customer_measurement = CustomerMeasurement::findOrFail($id);
+
+        // Update the attributes of the customer_measurement instance
+        $customer_measurement->clients_id = $request->input('clients_id');
+        $customer_measurement->status = $request->input('status');
+        $customer_measurement->categories_id = $request->input('categories_id');
+        // Update more attributes as needed
+
+        // Save the changes to the database
+        $customer_measurement->save();
+
+        // Redirect back to the index page or any other appropriate route
+        return redirect()->route('customer_measurement.index')->with('success', 'Measurement updated successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.

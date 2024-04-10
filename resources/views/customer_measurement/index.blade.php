@@ -53,8 +53,8 @@
                                     @foreach($customer_measurements as $customer_measurement)
                                         <tr>
                                             <td>{{ $customer_measurement->id }}</td>
-                                            <td>{{ $customer_measurement->clients }}</td>
-                                            <td>{{ $customer_measurement->category }}</td>
+                                            <td>{{ $customer_measurement->clients->name }}</td>
+                                            <td>{{ $customer_measurement->category->name }}</td>
                                             <td>{{ $customer_measurement->status }}</td>
                                             <td>
                                                 <a rel="tooltip" class="btn btn-success btn-link"

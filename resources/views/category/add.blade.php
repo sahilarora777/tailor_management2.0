@@ -103,16 +103,12 @@
                                     <div class="col-md-8">
                                             <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
-                                                <div class="form-group">
-                                    <label for="categories_id">Category:</label>
-                                    <select name="categories_id" id="categories_id" class="form-control" required>
-                                        <option value="" selected>Select</option>
-                                        @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                         
+                                                <div class="mb-3">
+                                                    <label for="category" class="form-label">Category Name</label>
+                                                    <input type="text" id="category" name="category" class="form-control" required>
+                                                </div>
+
                                                 <div class="mb-3">
                                                     <label for="status" class="form-label">Status</label>
                                                     <select id="status" name="status" class="form-control" required>

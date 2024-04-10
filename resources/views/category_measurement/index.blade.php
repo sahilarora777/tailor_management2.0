@@ -47,19 +47,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $category_measurement)
+                                    @foreach($categories as $category)
                                         <tr>
-                                            <td>{{ $category_measurement->name }}</td>
+                                            <td>{{ $category->name }}</td>
                                             <td>
                                                 <a rel="tooltip" class="btn btn-success btn-link"
-                                                   href="{{ route('category_measurement.edit', $category_measurement->id) }}" data-original-title=""
+                                                   href="{{ route('category_measurement.edit', $category->id) }}" data-original-title=""
                                                    title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
                                                 </td>
                                                  <td>
-                                                <form action="{{ route('category_measurement.destroy', $category_measurement->id) }}" method="POST" style="display: inline;">
+                                                <form action="{{ route('category_measurement.destroy', $category->id) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-link"><i class="material-icons ">delete</i></button>

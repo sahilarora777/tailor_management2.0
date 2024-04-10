@@ -15,4 +15,8 @@ class CustomerMeasurement extends Model
         return $this->belongsTo(Categorie::class,'categories_id');
     }
 
+    public function clients(){
+        return $this->belongsTo(Client::class,'clients_id');
+    }
+
 }

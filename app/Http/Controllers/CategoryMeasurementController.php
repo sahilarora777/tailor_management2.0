@@ -66,16 +66,15 @@ class CategoryMeasurementController extends Controller
         $clients = Client::all();
         $categories = Categorie::all();
        $measurements = Measurement::all();
-        $categoryMeasurements = CategoryMeasurement::where('category_id',$category_measurement->id)->first();
-        return view('category_measurement.manage',compact('clients','categories','measurements','categoryMeasurements','category_measurement'));
+        return view('category_measurement.manage',compact('clients','categories','measurements','category_measurement'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CategoryMeasurement $category_Measurement)
+    public function update(Request $request, CategoryMeasurement $category)
     {
-        //
+       
     }
 
     /**
