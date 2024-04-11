@@ -82,5 +82,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('customer_measurement', \App\Http\Controllers\CustomerMeasurementController::class);
     Route::resource('category_measurement', \App\Http\Controllers\CategoryMeasurementController::class);
 
+	Route::get('/get-measurements/{categoryId}', \App\Http\Controllers\CategoryMeasurementController::class.'@getMeasurements');
+    Route::post('/store-category', \App\Http\Controllers\CategorieController::class.'@stores');
+
 });
 

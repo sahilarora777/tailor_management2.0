@@ -87,4 +87,6 @@ class CategorieController extends Controller
     
         return response()->json(['id' => $category->id]);
     }
+
+ 
 }

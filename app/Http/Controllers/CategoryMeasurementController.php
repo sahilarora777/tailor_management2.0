@@ -26,6 +26,7 @@ class CategoryMeasurementController extends Controller
      */
     public function create()
     {
+
          $clients = Client::all();
           $categories = Categorie::all();
            $measurements = Measurement::all();
@@ -66,7 +67,7 @@ class CategoryMeasurementController extends Controller
         $clients = Client::all();
         $categories = Categorie::all();
        $measurements = Measurement::all();
-       $categoryMeasurements = CategoryMeasurement::where('category_id',$id)->get();
+    return   $categoryMeasurements = CategoryMeasurement::where('category_id','8')->get();
        return view('category_measurement.manage',compact('clients','categories','measurements','categoryMeasurements','id'));
     }
 
@@ -94,6 +95,14 @@ class CategoryMeasurementController extends Controller
 {
     $category_measurement->delete();
     return redirect()->route('category_measurement.index');
+}
+
+   
+public function getMeasurements($categoryId)
+{
+    $measurements = CategoryMeasurement::where('category_id', $categoryId)->with('measurement')->get();
+//  return $measurements[0]->measurement->name;
+    return response()->json($measurements);
 }
 
 }

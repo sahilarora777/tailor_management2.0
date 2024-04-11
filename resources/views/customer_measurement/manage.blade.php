@@ -49,17 +49,14 @@
                         </div>
                        
                         <div class="form-group">
-                                <label for="categories_id">Category:</label>
-                                <select name="categories_id" id="categories_id" class="form-control" required>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" {{ $category->id == $customer_measurement->categories_id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                    
-
+                            <label for="categories_id">Category:</label>
+                            <select name="categories_id" id="categories_id" class="form-control" required>
+                                <option value="" selected>--Select--</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ $category->id == $customer_measurement->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="row mt-4">
                             <div class="col-md-12 text-center">

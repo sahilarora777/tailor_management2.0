@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use App\Models\Client;
 use App\Models\Measurement;
+use App\Models\CategoryMeasurement;
 use App\Models\CustomerMeasurement;
+
 use Illuminate\Http\Request;
 
 class CustomerMeasurementController extends Controller
@@ -26,7 +28,9 @@ class CustomerMeasurementController extends Controller
     {
         $clients = Client::all();
         $categories = Categorie::all();
-        return view ('customer_measurement.add',compact('clients','categories'));
+        $categoryMeasurements = CategoryMeasurement::where('category_id','1')->get();
+      
+        return view ('customer_measurement.add',compact('clients','categories','categoryMeasurements'));
     }
 
     /**
@@ -61,6 +65,7 @@ class CustomerMeasurementController extends Controller
         $customer_measurement = CustomerMeasurement::findOrFail($id);
         $clients = Client::all(); 
         $categories = Categorie::all();
+
         return view('customer_measurement.manage', compact('customer_measurement', 'clients', 'categories'));
     }
     
