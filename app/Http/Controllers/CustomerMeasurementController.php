@@ -29,7 +29,8 @@ class CustomerMeasurementController extends Controller
         $clients = Client::all();
         $categories = Categorie::all();
         $categoryMeasurements = CategoryMeasurement::where('category_id','1')->get();
-      
+       
+
         return view ('customer_measurement.add',compact('clients','categories','categoryMeasurements'));
     }
 
@@ -41,10 +42,10 @@ class CustomerMeasurementController extends Controller
         $request->validate([
             'clients_id' => 'required',
             'categories_id' => 'required',
-            'status' => 'required',
 
         ]);
-        CustomerMeasurement::create($request->post());
+        
+       return CustomerMeasurement::create($request->post());
         return redirect()->route('customer_measurement.index')->with('success category updated successfully');
 
     }

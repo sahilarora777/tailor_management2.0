@@ -45,7 +45,7 @@ class CategoryMeasurementController extends Controller
     $category_measurements = new CategoryMeasurement();
      $category_measurements->category_id = $request->input('categories_id');
      $category_measurements->measurement_id = $measurement_id;
-    $category_measurements->save();
+    $category_measurements->save(); 
        }
     return redirect()->route('category_measurement.index');
     }

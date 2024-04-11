@@ -53,8 +53,7 @@
                             <div class="form-group">
                     
                                 <label for="measurements_id">Measurements:</label>
-                                <select name="measurements_id[]" id="measurements_id" class="form-control" multiple required>
-                                    Options will be dynamically populated based on selected category
+                                
                                 </select>
                                 <div class="cat_measurement"></div>
                                                                    
