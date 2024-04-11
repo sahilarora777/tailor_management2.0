@@ -39,66 +39,94 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group" id="category-fields">
                                         <label for="categories_id">Category:</label>
-                                        <select name="categories_id" id="categories_id" class="form-control" required>
-                                            <option value="" selected>--Select--</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="category-rows">
+                                            <div class="category-row">
+                                                <select name="categories[]" class="form-control category-select" required>
+                                                    <option value="" selected>--Select--</option>
+                                                    @foreach($categories as $category)
+                                                        <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="button" class="btn btn-sm btn-danger mt-2 remove-category">-</button>
+                                                <button type="button" class="btn btn-sm btn-success mt-2" id="add-category">+</button>
+                                        
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                     
-                                <label for="measurements_id">Measurements:</label>
-                                
-                                </select>
-                                <div class="cat_measurement"></div>
-                                                                   
+                    <label for="measurements_id">Measurements:</label>
+                    
+                    </select>
+                    <div class="cat_measurement"></div>
+                                                       
 </div>
-                            <div class="row mt-4" id="submit-button-container">
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
-                                </div>
-                            </div>
-                        </form>
+                <div class="row mt-4" id="submit-button-container">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-    <x-plugins></x-plugins>
+</div>
+</div>
+</div>
+<x-plugins></x-plugins>
 </x-layout>
-
 <script>
-    $(document).ready(function() {
-        $('#categories_id').change(function() {
-            var categoryId = $(this).val();
+$(document).ready(function() {
+    // Function to add a new category dropdown
+    $('#add-category').click(function() {
+        $('#category-fields').append(`
+            <div class="category-row">
+                <select name="categories[]" class="form-control category-select" required>
+                    <option value="" selected>--Select--</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <button type="button" class="btn btn-sm btn-danger mt-2 remove-category">Remove</button>
+            </div>
+        `);
+    });
 
-            // Make AJAX request to fetch measurements based on selected category
-            $.ajax({
-                url: '/get-measurements/' + categoryId,
-                type: 'GET',
-                success: function(response) {
-                    // Clear existing options
-                    $('.cat_measurement').empty();
+    // Function to remove a category dropdown
+    $(document).on('click', '.remove-category', function() {
+        $(this).closest('.category-row').remove();
+    });
 
-                    // Populate options with fetched measurements
-                    response.forEach(function(category) {
-                        $('.cat_measurement').append(`
-                            <div class="form-group">
-                                <label for="${category.measurement.id}">${category.measurement.name}:</label>
-                                <input type="text" name="${category.measurement.id}" id="${category.measurement.id}" class="form-control">
-                            </div>
-                        `);
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
+    // Event handler for category dropdown change
+    $(document).on('change', 'select[name="categories[]"]', function() {
+        var categoryId = $(this).val();
+
+        // Make AJAX request to fetch measurements based on selected category
+        $.ajax({
+            url: '/get-measurements/' + categoryId,
+            type: 'GET',
+            success: function(response) {
+                // Clear existing options
+                $('.cat_measurement').empty();
+
+                // Populate options with fetched measurements
+                response.forEach(function(category) {
+                    $('.cat_measurement').append(`
+                    <div class="form-group">
+                            <label for="${category.measurement.id}">${category.measurement.name}:</label>
+                            <input type="text" name="${category.measurement.id}" id="${category.measurement.id}" class="form-control">
+                        </div>
+                    `);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
         });
     });
+});
 </script>
+

@@ -38,17 +38,24 @@ class CustomerMeasurementController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'clients_id' => 'required',
-            'categories_id' => 'required',
+{
+    $request->validate([
+        'clients_id' => 'required',
+        'categories' => 'required|array',
+    ]);
 
+    // Loop through each selected category and create a new CustomerMeasurement for each
+    foreach ($request->categories as $categoryId) {
+        CustomerMeasurement::create([
+            'clients_id' => $request->clients_id,
+            'categories_id' => $categoryId,
+            // Add other fields as needed
         ]);
-        
-       return CustomerMeasurement::create($request->post());
-        return redirect()->route('customer_measurement.index')->with('success category updated successfully');
-
     }
+
+    return redirect()->route('customer_measurement.index')->with('success', 'Categories updated successfully');
+}
+
 
     /**
      * Display the specified resource.

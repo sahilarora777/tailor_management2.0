@@ -39,6 +39,7 @@ class CategoryMeasurementController extends Controller
      */
     public function store(Request $request)
     {
+       
        $measurement_ids =  $request->measurements_id;
        foreach($measurement_ids as $measurement_id)
        {
