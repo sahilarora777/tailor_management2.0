@@ -39,47 +39,48 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group" id="category-fields">
+                                    <div class="form-group">
                                         <label for="categories_id">Category:</label>
-                                        <div class="category-rows">
-                                            <div class="category-row">
-                                                <select name="categories[]" class="form-control category-select" required>
-                                                    <option value="" selected>--Select--</option>
-                                                    @foreach($categories as $category)
-                                                        <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <button type="button" class="btn btn-sm btn-danger mt-2 remove-category">-</button>
-                                                <button type="button" class="btn btn-sm btn-success mt-2" id="add-category">+</button>
-                                        
-                                            </div>
-                                        </div>
+                                        <select name="categories_id" id="categories_id" class="form-control" required>
+                                            <option value="" selected>--Select--</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                     
-                    <label for="measurements_id">Measurements:</label>
-                    
-                    </select>
-                    <div class="cat_measurement"></div>
-                                                       
+                                <label for="measurements_id">Measurements:</label>
+                                
+                                </select>
+                                <div class="cat_measurement"></div>
+                                                                   
 </div>
-                <div class="row mt-4" id="submit-button-container">
-                    <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+                            <div class="row mt-4" id="submit-button-container">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
-</div>
-</div>
-<x-plugins></x-plugins>
+    <x-plugins></x-plugins>
 </x-layout>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
+
+
+
 <script>
-$(document).ready(function() {
+
+
+    $(document).ready(function() {
     // Function to add a new category dropdown
     $('#add-category').click(function() {
         $('#category-fields').append(`
@@ -99,34 +100,37 @@ $(document).ready(function() {
     $(document).on('click', '.remove-category', function() {
         $(this).closest('.category-row').remove();
     });
+        $('#categories_id').change(function() {
+            var categoryId = $(this).val();
 
-    // Event handler for category dropdown change
-    $(document).on('change', 'select[name="categories[]"]', function() {
-        var categoryId = $(this).val();
+            // Make AJAX request to fetch measurements based on selected category
+            $.ajax({
+                url: '/get-measurements/' + categoryId,
+                type: 'GET',
+                success: function(response) {
+                    // Clear existing options
+                    $('.cat_measurement').empty();
 
-        // Make AJAX request to fetch measurements based on selected category
-        $.ajax({
-            url: '/get-measurements/' + categoryId,
-            type: 'GET',
-            success: function(response) {
-                // Clear existing options
-                $('.cat_measurement').empty();
-
-                // Populate options with fetched measurements
-                response.forEach(function(category) {
-                    $('.cat_measurement').append(`
-                    <div class="form-group">
-                            <label for="${category.measurement.id}">${category.measurement.name}:</label>
-                            <input type="text" name="${category.measurement.id}" id="${category.measurement.id}" class="form-control">
-                        </div>
-                    `);
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
+                    // Populate options with fetched measurements
+                    response.forEach(function(category) {
+                        $('.cat_measurement').append(`
+                      
+                                <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="${category.measurement.id}">${category.measurement.name}:</label>
+                                <input type="text" name="measurement_id[${category.measurement.id}]" id="${category.measurement.id}" class="form-select">
+                            
+                                </div>
+                                 </div>
+                        `);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
         });
     });
-});
-</script>
 
+    
+</script>

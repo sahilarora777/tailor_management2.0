@@ -68,7 +68,7 @@ class CategoryMeasurementController extends Controller
         $clients = Client::all();
         $categories = Categorie::all();
        $measurements = Measurement::all();
-    return   $categoryMeasurements = CategoryMeasurement::where('category_id','8')->get();
+       $categoryMeasurements = CategoryMeasurement::where('category_id','8')->get();
        return view('category_measurement.manage',compact('clients','categories','measurements','categoryMeasurements','id'));
     }
 

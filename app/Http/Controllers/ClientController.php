@@ -104,4 +104,14 @@ class ClientController extends Controller
         $client->delete();
         return redirect()->route('client.index');
     }
+
+    public function stores(Request $request) {
+        $client = new Client();
+        $client->name = $request->input('name');
+        $client->save();
+    
+        return response()->json(['id' => $client->id]);
+    }
+
+
 }
