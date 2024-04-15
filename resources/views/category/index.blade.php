@@ -26,7 +26,7 @@
 
                                 <form action="{{ route('category.index') }}" class="search-form">
                                     <div class="form-row align-items-center">
-                                        <div class="col-md-6 mb-2 ml-4"> 
+                                    <div class="col-md-6 mb-2 ml-4 border border-1 border-radius-lg me-2 input-group input-group-outline" style="width: 200px;"> 
                                             <input type="text" name="search_text" class="form-control" placeholder="Search...">
                                         </div>
 

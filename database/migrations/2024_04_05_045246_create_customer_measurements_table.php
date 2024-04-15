@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('customer_measurements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('status')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('measurement_id');
+            $table->string('values')->nullable();
+            $table->unsignedBigInteger('clients_id');
+            $table->unsignedBigInteger('amount')->nullable();
             $table->timestamps();
         });
     }

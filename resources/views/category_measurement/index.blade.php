@@ -26,10 +26,9 @@
 
                                 <form action="{{ route('category_measurement.index') }}" class="search-form">
                                     <div class="form-row align-items-center">
-                                        <div class="col-md-6 mb-2 ml-4"> 
-                                            <input type="text" name="search_text" class="form-control" placeholder="Search...">
-                                        </div>
-
+                                    <div class="col-md-6 mb-2 ml-4 border border-1 border-radius-lg me-2 input-group input-group-outline" style="width: 200px;"> 
+                                <input type="text" name="search_text" class="form-control" placeholder="Search...">
+                                            </div>
                                         <div class="col-md-6 mb-2 ">
                                             <div class="box">
                                                 <button type="submit" class="btn btn-primary btn-custom">Search</button>

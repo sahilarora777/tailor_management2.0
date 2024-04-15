@@ -124,7 +124,7 @@
 
                                         <div class="form-group">
                                             <label for="reffering">Referring:</label>
-                                            <input type="text" id="reffering" name="reffering" class="form-control" required>
+                                            <input type="text" id="reffering" name="reffering" class="form-control" >
                                         </div>
 
                                         <div class="form-group">

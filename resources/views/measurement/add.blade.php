@@ -33,15 +33,16 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="date" class="form-label">Date:</label>
-                                    <input type="date" name="date" id="date" class="form-control">
+                                    <input type="date" name="date" id="date" class="form-control input-group input-group-outline"  style="height: 40px; border: 1px solid #ced4da; border-radius: 5px;">
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="name" class="form-label">Name:</label>
-                                    <input type="text" name="name" id="name" class="form-control">
-                                </div>
+                                <div class="col-md-4" >
+                                <label for="name" class="form-label">Measurement-Name:</label>
+                                       <input type="text" name="name" id="name" class="form-control input-group input-group-outline" style="height: 40px; border: 1px solid #ced4da; border-radius: 5px; text-align: 50;">
+                                           </div>
+
                                 <div class="col-md-4">
                                     <label for="clients_id" class="form-label">Client:</label>
-                                    <select name="clients_id" id="clients_id" class="form-select" required>
+                                    <select name="clients_id" id="clients_id" class="form-control" style="height: 40px; border: 1px solid #ced4da; border-radius: 5px; width: 200px; text-align: 50;" required>
                                         <option value="" selected>--Select--</option>
                                         @foreach($clients as $client)
                                             <option value="{{ $client->id }}">{{ $client->name }}</option>
@@ -50,7 +51,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label for="categories_id" class="form-label">Category:</label>
-                                    <select name="categories_id" id="categories_id" class="form-control" required>
+                                    <select name="categories_id" id="categories_id" class="form-control" style="height: 40px; border: 1px solid #ced4da; border-radius: 5px; width: 200px; text-align: 50;" required>
                                         <option value="" selected>--Select--</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>

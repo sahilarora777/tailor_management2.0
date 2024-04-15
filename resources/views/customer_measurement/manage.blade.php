@@ -37,20 +37,10 @@
                                     <option value="new">Add New Client</option> <!-- Add New Client option -->
                                 </select>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="status" class="form-label">Status</label>
-                                <select id="status" name="status" class="form-control" required>
-                                    <option value="" selected disabled>Select status</option>
-                                    <option value="available" {{ $customer_measurement->status == 'available' ? 'selected' : '' }}>Available</option>
-                                    <option value="not available" {{ $customer_measurement->status == 'not available' ? 'selected' : '' }}>Not Available</option>
-                                </select>
-                            </div>
-                        </div>
                        
                         <div class="form-group">
                             <label for="categories_id">Category:</label>
-                            <select name="categories_id" id="categories_id" class="form-control" required>
+                            <select name="category_id" id="category_id" class="form-control" required>
                                 <option value="" selected>--Select--</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ $category->id == $customer_measurement->category_id ? 'selected' : '' }}>{{ $category->name }}</option>

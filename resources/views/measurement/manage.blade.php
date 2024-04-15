@@ -26,15 +26,17 @@
 
                                 <div class="col-md-4">
                                     <label for="clients_id" class="form-label">Client:</label>
-                                    <select name="clients_id" id="clients_id" class="form-control" required>
-                                        <option value="" selected>--Select--</option>
-                                        @foreach($clients as $client)
-                                            <option value="{{ $client->id }}" {{ $client->id == old('clients_id', $measurement->clients_id) ? 'selected' : '' }}>
-                                                {{ $client->name }}
-                                            </option>
-                                        @endforeach
-                                        <option value="new">Add New Client</option> <!-- Add New Client option -->
-                                    </select>
+                                    <div class="input-group input-group-outline">
+                                        <select name="clients_id" id="clients_id" class="form-control" style="height: 40px; border: 1px solid #ced4da; border-radius: 5px; width: 200px; text-align: 50;" required>
+                                            <option value="" selected>--Select--</option>
+                                            @foreach($clients as $client)
+                                                <option value="{{ $client->id }}" {{ $client->id == old('clients_id', $measurement->clients_id) ? 'selected' : '' }}>
+                                                    {{ $client->name }}
+                                                </option>
+                                            @endforeach
+                                            <option value="new">Add New Client</option> <!-- Add New Client option -->
+                                        </select>
+                                    </div>
                                 </div>
 
 
@@ -42,20 +44,23 @@
 
                             <div class="form-group">
                                 <label for="categories_id">Category:</label>
-                                <select name="categories_id" id="categories_id" class="form-control" required>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" {{ $category->id == $measurement->categories_id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <div class="input-group input-group-outline">
+                                    <select name="categories_id" id="categories_id" class="form-control" style="border-radius: 5px; border: 1px solid #ccc;" required>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ $category->id == $measurement->categories_id ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="col-md-4">
                                     <label for="date" class="form-label">Date:</label>
-                                    <input type="date" name="date" id="date" class="form-control" value="{{ old('date', $measurement->date) }}">
+                                    <div class="input-group input-group-outline">
+                                        <input type="date" name="date" id="date" class="form-control" style="border-radius: 5px; border: 1px solid #ccc;"  value="{{ old('date', $measurement->date) }}">
+                                    </div>
                                 </div>
-
                             
                           
 

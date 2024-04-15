@@ -22,6 +22,7 @@
                         <span class="nav-link-text ms-1">Dashboard</span>
                     </a>
                 </li>
+                <hr>
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="clientsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons opacity-10">person</i>
@@ -43,6 +44,7 @@
                         <a class="dropdown-item text-success" href="/brand">Manage Brand</a>
                     </div>
                 </li>
+                <hr>
                 <!-- Category subcontent -->
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,6 +67,7 @@
                     <a class="dropdown-item text-success" href="/product">Manage Services/Products</a>
                     </div>
                 </li>
+                
                 <!-- Measurement subcontent -->
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="measurementDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,6 +80,7 @@
                 
                     </div>
                 </li>
+                <hr>
                 <!-- Category Measurement subcontent -->
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="categoryMeasurementDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -93,8 +97,8 @@
 
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="categoryMeasurementDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons opacity-10">Customer</i>
-                        <span class="nav-link-text ms-1">Custromer Measurement</span>
+                    <i class="material-icons opacity-10">people</i>
+                        <span class="nav-link-text ms-1">Customer Measurement</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="categoryMeasurementDropdown" id="categoryMeasurementSubcontent">
                         <a class="dropdown-item text-info" href="/customer_measurement/create">Add CustomerMeasurement</a>
@@ -103,7 +107,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                   
+                   <hr>
                    
                 </li>
                 <!-- Add more subcontents here -->

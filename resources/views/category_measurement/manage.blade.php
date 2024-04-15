@@ -17,21 +17,24 @@
                 </div>
                 <div class="container">
                     <div class="col-md-12">
-                    <form action="{{ route('category_measurement.update',$id ) }}" method="post" enctype="multipart/form-data">                            @csrf
+                    <form action="{{ route('category_measurement.update',$id ) }}" method="post" enctype="multipart/form-data">                            
                             @method('PUT')
-
+                            @csrf
                             <div class="form-group">
     <label for="categories_id">Category:</label>
-    <select name="categories_id" id="categories_id" class="form-control" required>
-        <option value="" selected>--Select--</option>
+    <select name="categories_id" id="categories_id" class="input-group input-group-outline"  style="height: 20px; border: 1px solid #ced4da; border-radius: 5px; width: 100px;" required>
+        <option  value="" selected>--Select--</option>
         @foreach($categories as $category)
-        <option value="{{ $category->id }}" data-category="{{ $category->id }}" @if($category->id == $id) selected @endif>{{ $category->name }}</option>        @endforeach
+        <option value="{{ $category->id }}" data-category="{{ $category->id }}" @if($category->id == $id) selected @endif>{{ $category->name }}</option>
+        @endforeach
     </select>
 </div>
 
 @foreach($measurements as $measurement)
     <div class="form-check form-check-inline">
-    <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements_id[]" value="{{ $measurement->id }}" class="form-check-input" @if($measurements && in_array($measurement->id, $categoryMeasurements->pluck('measurement_id')->toArray())) checked @endif>        <label for="measurement{{ $measurement->id }}" class="form-check-label">{{ $measurement->name }}</label>
+    <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements_id[]"
+     value="{{ $measurement->id }}" class="form-check-input" @if($measurements && in_array($measurement->id, $categoryMeasurements->pluck('measurement_id')->toArray())) checked @endif>
+    <label for="measurement{{ $measurement->id }}" class="form-check-label">{{ $measurement->name }}</label>
     </div>
 @endforeach
 

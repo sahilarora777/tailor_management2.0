@@ -19,10 +19,9 @@
                     <div class="col-md-12">
                         <form action="{{ route('category_measurement.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
-
                             <div class="form-group ">
                                 <label for="categories_id">Category:</label>
-                                <select name="categories_id" id="categories_id" class="form-control" required>
+                                <select name="categories_id" id="categories_id" class="input-group input-group-outline" style="height: 20px; border: 1px solid #ced4da; border-radius: 5px; width: 100px;" required>
                                     <option value="" selected>--Select--</option>
                                     @foreach($categories as $category)
                                         @if($category->status == 'Active')
