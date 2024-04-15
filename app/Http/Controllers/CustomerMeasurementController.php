@@ -39,18 +39,18 @@ class CustomerMeasurementController extends Controller
      */
     public function store(Request $request)
     {
-        
+        return $request;
          $measurement_ids =  $request->measurement_id;
-         $categories =  $request->categories;
-         foreach($categories as $category)
+           $categories_ids =  $request->categories_id;
+         foreach($categories_ids as $category)
          {
-     foreach($measurement_ids as $measurement_id => $measurement_value)
+     foreach($measurement_ids as $measurement_id => $values)
 {
      $customer_measurement = new CustomerMeasurement;
-     $customer_measurement->categories_id = $category;
-     $customer_measurement->clients_id = $request->clients_id;
-     $customer_measurement->measurements_id = $measurement_id;
-     $customer_measurement->measurements_value = $measurement_value;
+    $customer_measurement->category_id = $request->category;
+        $customer_measurement->clients_id = $request->clients_id;
+        $customer_measurement->measurement_id = $measurement_id;
+     $customer_measurement->value = $values;
 
      $customer_measurement->save();
 }
@@ -58,26 +58,6 @@ class CustomerMeasurementController extends Controller
      return redirect()->route('customer_measurement.index')->with('success category updated successfully');
 
  }
-
-// public function store(Request $request)
-//     {
-//         $request->validate([
-//             'clients_id' => 'required',
-//             'categories' => 'required|array',
-//         ]);
-    
-//         // Loop through each selected category and create a new CustomerMeasurement for each
-//         foreach ($request->categories as $categoryId) {
-//             CustomerMeasurement::create([
-//                 'clients_id' => $request->clients_id,
-//                 'categories_id' => $categoryId,
-//                 // Add other fields as needed
-//             ]);
-//         }
-    
-//         // Redirect back to the index page with a success message
-//         return redirect()->route('customer_measurement.index')->with('success', 'Categories updated successfully');
-//     }
 
      /**
      * Display the specified resource.
@@ -104,27 +84,17 @@ class CustomerMeasurementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validate the incoming request data
+
         $request->validate([
             'clients_id' => 'required',
             'status' => 'required',
             'categories_id' => 'required',
-            // Add more validation rules as needed
         ]);
-
-        // Find the customer_measurement instance by its ID
         $customer_measurement = CustomerMeasurement::findOrFail($id);
-
-        // Update the attributes of the customer_measurement instance
         $customer_measurement->clients_id = $request->input('clients_id');
         $customer_measurement->status = $request->input('status');
         $customer_measurement->categories_id = $request->input('categories_id');
-        // Update more attributes as needed
-
-        // Save the changes to the database
-        $customer_measurement->save();
-
-        // Redirect back to the index page or any other appropriate route
+      $customer_measurement->save();
         return redirect()->route('customer_measurement.index')->with('success', 'Measurement updated successfully');
     }
 
@@ -136,9 +106,5 @@ class CustomerMeasurementController extends Controller
     {
         $customerMeasurement->delete();
         return redirect()->route('customer_measurement.index');
-    }
-    public function category()
-    {
-     return $categories = Categorie::with('clients','measurement');
     }
 }
