@@ -19,17 +19,17 @@
                     <div class="col-md-12">
                         <form action="{{ route('category_measurement.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group ">
-                                <label for="categories_id">Category:</label>
-                                <select name="categories_id" id="categories_id" class="input-group input-group-outline" style="height: 20px; border: 1px solid #ced4da; border-radius: 5px; width: 100px;" required>
-                                    <option value="" selected>--Select--</option>
-                                    @foreach($categories as $category)
-                                        @if($category->status == 'Active')
+   
+                            <div class="col-md-12">
+                                    <label for="categories_id" class="form-label">Category:</label>
+                                    <select name="categories_id" id="categories_id" class="form-control" style="height: 40px; border: 1px solid #ced4da; border-radius: 5px; width: 200px; text-align: 50;" required>
+                                        <option value="" selected>--Select--</option>
+                                        @foreach($categories as $category)
                                             <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
+                                        @endforeach
+                                    </select>
+                                </div>
+
                             @foreach($measurements as $measurement)
                                 <div class="form-check form-check-inline">
                                     <input type="checkbox" id="measurement{{ $measurement->id }}" name="measurements_id[]" value="{{ $measurement->id }}" class="form-check-input">

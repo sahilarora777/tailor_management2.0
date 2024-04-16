@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorie;
+use App\Models\Order;
 use App\Models\Client;
 use App\Models\Measurement;
 use App\Models\CategoryMeasurement;
@@ -39,7 +40,7 @@ class CustomerMeasurementController extends Controller
      */
     public function store(Request $request)
     {
-        
+     
          $measurement_ids =  $request->measurement_id;
          $categories =  $request->categories;
          foreach($categories as $category)
@@ -54,30 +55,15 @@ class CustomerMeasurementController extends Controller
 
      $customer_measurement->save();
 }
+$order = new Order;
+$order->clients_id = $request->clients_id;
+// Add other fields related to the order as needed
+$order->save();
          }
      return redirect()->route('customer_measurement.index')->with('success category updated successfully');
 
  }
 
-// public function store(Request $request)
-//     {
-//         $request->validate([
-//             'clients_id' => 'required',
-//             'categories' => 'required|array',
-//         ]);
-    
-//         // Loop through each selected category and create a new CustomerMeasurement for each
-//         foreach ($request->categories as $categoryId) {
-//             CustomerMeasurement::create([
-//                 'clients_id' => $request->clients_id,
-//                 'categories_id' => $categoryId,
-//                 // Add other fields as needed
-//             ]);
-//         }
-    
-//         // Redirect back to the index page with a success message
-//         return redirect()->route('customer_measurement.index')->with('success', 'Categories updated successfully');
-//     }
 
      /**
      * Display the specified resource.
@@ -95,8 +81,8 @@ class CustomerMeasurementController extends Controller
         $customer_measurement = CustomerMeasurement::findOrFail($id);
         $clients = Client::all(); 
         $categories = Categorie::all();
-
-        return view('customer_measurement.manage', compact('customer_measurement', 'clients', 'categories'));
+        $measurements = Measurement::all();
+        return view('customer_measurement.manage', compact('customer_measurement', 'clients', 'categories','measurements'));
     }
     
     /**

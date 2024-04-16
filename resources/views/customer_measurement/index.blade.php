@@ -41,7 +41,6 @@
                                 <table class="table">
                                     <thead class="thead-dark">
                                     <tr>
-                                        <th>Id</th>
                                      <th>Clients</th>                        
                                      <th>Category</th>                        
                                      <th>Status</th>

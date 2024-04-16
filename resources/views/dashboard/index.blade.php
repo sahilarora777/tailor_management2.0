@@ -79,6 +79,44 @@
                 </div>
             </div>
 
-
+            <div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h5 class="text-white mx-3"><strong>User Wise Order<strong></h5>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Measurements</th>
+                                    <th>Order's Amount</th>
+                                    <th>Action</th> <!-- Add a new column for the action button -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($orders as $order)
+                                <tr>
+                                    <td>{{ $order->clients?->name }}</td>
+                                    <!-- Add more columns if needed -->
+                                    <td>
+                                        <a href="{{ route('customer_measurement.edit', $order->id) }}" data-original-title="" class="btn btn-info">View Measurements</a>
+                                    </td>                                
+                                    <td>{{ $order->order_amount }}</td> 
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </x-layout>

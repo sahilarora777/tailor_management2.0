@@ -29,7 +29,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="clients_id" class="form-label">Client:</label>
-                                        <select name="clients_id" id="clients_id" class="input-group input-group-outline" style="height: 20px; border: 1px solid #ced4da; border-radius: 5px; width: 100px;" required>
+                                        <select name="clients_id" id="clients_id" class="form-select"  required>
                                             <option value="" selected>--Select--</option>
                                             @foreach($clients as $client)
                                                 <option value="{{ $client->id }}">{{ $client->name }}</option>
@@ -46,7 +46,7 @@
                                             
                                             <label for="categories_id" class="form-label">Categories:</label>
 
-                                            <select name="categories[]" class="input-group input-group-outline" style="height: 20px; border: 1px solid #ced4da; border-radius: 5px; width: 100px;" required>
+                                            <select name="categories[]" class="form-select" required>
                                                     <option value="" selected>--Select--</option>
                                                     @foreach($categories as $category)
                                                         <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
@@ -85,7 +85,7 @@
     $('#add-category').click(function() {
         $('#category-fields').append(`
             <div class="category-row">
-                <select name="categories[]" class="input-group input-group-outline" style="height: 20px; border: 1px solid #ced4da; border-radius: 5px; width: 100px;" required>
+                <select name="categories[]" class="form-select" required>
                     <option value="" selected>--Select--</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" data-category="{{ $category->id }}">{{ $category->name }}</option>
